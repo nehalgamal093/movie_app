@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/material/theme_data.dart';
 import 'package:movies_app/theme/color_manager.dart';
 import 'package:movies_app/theme/my_theme/base_theme.dart';
 
@@ -19,17 +16,22 @@ class MainTheme extends BaseTheme {
   ThemeData get myThemeData => ThemeData(
         textTheme: TextTheme(
           titleLarge: TextStyle(
-            fontFamily: 'Inter',
-            fontWeight: FontWeight.w500,
-            fontSize: 36,
-            color: textColor
-          ),
+              fontFamily: 'Inter',
+              fontWeight: FontWeight.w500,
+              fontSize: 36,
+              color: textColor),
           titleMedium: TextStyle(
               fontFamily: 'Inter',
-              fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w500,
               fontSize: 20,
+              color: textColor),
+          bodyMedium: TextStyle(
+              fontFamily: 'Inter',
+              fontWeight: FontWeight.w700,
+              fontSize: 24,
               color: textColor
-          ),
+          )
         ),
+
       );
 }
