@@ -41,5 +41,5 @@ class StringsManager {
   static const String phoneNumber ="Phone Number";
   static const String createAccount ="Create Account";
 
-  static const String alreadyHaveAccount = "Already Have Account ?";
+  static const String alreadyHaveAccount = "Already Have Account ? ";
 }
