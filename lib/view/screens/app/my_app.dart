@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/theme/my_theme/base_theme.dart';
 import 'package:movies_app/theme/my_theme/main_theme.dart';
 import 'package:movies_app/view/screens/explore/explore_screen.dart';
+import 'package:movies_app/view/screens/forget_password_screen.dart';
 import 'package:movies_app/view/screens/login_screen/login_screen.dart';
 import 'package:movies_app/view/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:movies_app/view/screens/register_screen/register_screen.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
         ExploreScreen.routeName: (context) => ExploreScreen(),
         OnboardingScreen.routeName: (context) => OnboardingScreen(),
         LoginScreen.routeName:(context) => LoginScreen(),
-        RegisterScreen.routeName :(context)=>RegisterScreen()
+        RegisterScreen.routeName :(context)=>RegisterScreen(),
+        ForgetPasswordScreen.routeName :(context)=>ForgetPasswordScreen()
       },
     );
   }

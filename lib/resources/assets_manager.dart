@@ -11,6 +11,7 @@ class AssetsManager {
   static const String avatar1 = 'assets/images/avatar1.png';
   static const String avatar2 = 'assets/images/avatar2.png';
   static const String avatar3 = 'assets/images/avatar3.png';
+  static const String forgetPassword = 'assets/images/forget_password.png';
   //Icons
   static const String email = 'assets/icons/email.png';
   static const String eyeOff = 'assets/icons/eye_off.png';

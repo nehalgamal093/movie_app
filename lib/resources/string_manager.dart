@@ -42,4 +42,7 @@ class StringsManager {
   static const String createAccount ="Create Account";
 
   static const String alreadyHaveAccount = "Already Have Account ? ";
+
+  static const String verifyEmail ="Verify Email";
+  static const String forgetPass ="Forget Password";
 }
