@@ -14,6 +14,19 @@ class MainTheme extends BaseTheme {
 
   @override
   ThemeData get myThemeData => ThemeData(
+    useMaterial3: true,
+        scaffoldBackgroundColor: background,
+        appBarTheme: AppBarTheme(
+          backgroundColor: background,
+          iconTheme: IconThemeData(color: ColorManager.primaryColor),
+          titleTextStyle: TextStyle(
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
+              color: ColorManager.primaryColor)
+            ,centerTitle: true
+
+        ),
         textTheme: TextTheme(
           titleLarge: TextStyle(
               fontFamily: 'Inter',
@@ -22,16 +35,19 @@ class MainTheme extends BaseTheme {
               color: textColor),
           titleMedium: TextStyle(
               fontFamily: 'Inter',
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w400,
               fontSize: 20,
               color: textColor),
           bodyMedium: TextStyle(
               fontFamily: 'Inter',
               fontWeight: FontWeight.w700,
               fontSize: 24,
-              color: textColor
-          )
+              color: textColor),
+          bodySmall: TextStyle(
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
+              color: textColor),
         ),
-
       );
 }

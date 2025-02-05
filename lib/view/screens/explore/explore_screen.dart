@@ -50,6 +50,10 @@ class ExploreScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, OnboardingScreen.routeName);
                 },
+
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Inter',
               ),
               SizedBox(
                 height: 33,
@@ -61,4 +65,3 @@ class ExploreScreen extends StatelessWidget {
     );
   }
 }
-

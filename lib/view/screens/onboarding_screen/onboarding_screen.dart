@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/common_widgets/custom_button.dart';
 import 'package:movies_app/models/onboarding_model.dart';
 import 'package:movies_app/resources/string_manager.dart';
+import 'package:movies_app/view/screens/login_screen/login_screen.dart';
 import '../../../theme/color_manager.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -14,12 +15,12 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController pageController =
-      PageController(initialPage: 0, viewportFraction: .8);
+      PageController(initialPage: 0, viewportFraction: 1);
 
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
-      controller: pageController,
+        controller: pageController,
         itemCount: OnboardingModel.length,
         itemBuilder: (context, index) {
           return Scaffold(
@@ -73,17 +74,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 height: 24,
                               )
                             : SizedBox(),
-
-                        index < OnboardingModel.length - 1?  CustomButton(
+                        index < OnboardingModel.length - 1
+                            ? CustomButton(
                                 color: ColorManager.primaryColor,
                                 title: StringsManager.next,
                                 onPressed: () {
-                                  pageController.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeIn);
-                                }):
-                        CustomButton(
-                            color: ColorManager.primaryColor,
-                            title: StringsManager.finish,
-                            onPressed: () {}),
+                                  pageController.nextPage(
+                                      duration: Duration(milliseconds: 500),
+                                      curve: Curves.easeIn);
+                                },
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Inter',
+                              )
+                            : CustomButton(
+                                color: ColorManager.primaryColor,
+                                title: StringsManager.finish,
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, LoginScreen.routeName);
+                                },
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Inter',
+                              ),
                         SizedBox(
                           height: 16,
                         ),
@@ -94,8 +108,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 title: StringsManager.back,
                                 borderColor: ColorManager.primaryColor,
                                 onPressed: () {
-                                  pageController.previousPage(duration: Duration(milliseconds: 500), curve: Curves.easeIn);
-                                })
+                                  pageController.previousPage(
+                                      duration: Duration(milliseconds: 500),
+                                      curve: Curves.easeIn);
+                                },
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Inter',
+                              )
                             : SizedBox()
                       ],
                     ),

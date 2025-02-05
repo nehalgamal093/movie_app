@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/resources/assets_manager.dart';
 import '../theme/color_manager.dart';
 
 class CustomButton extends StatelessWidget {
@@ -6,14 +7,23 @@ class CustomButton extends StatelessWidget {
   final Color color;
   final Color textColor;
   final Color borderColor;
+  final Widget icon;
+  final String fontFamily;
+  final FontWeight fontWeight;
+  final double fontSize;
   final Function() onPressed;
-  const CustomButton(
-      {super.key,
-      required this.color,
-      required this.title,
-      required this.onPressed,
-        this.textColor = ColorManager.blackColor,
-      this.borderColor = Colors.transparent});
+  const CustomButton({
+    super.key,
+    required this.color,
+    required this.title,
+    required this.onPressed,
+    required this.fontFamily,
+    required this.fontWeight,
+    required this.fontSize,
+    this.textColor = ColorManager.blackColor,
+    this.borderColor = Colors.transparent,
+    this.icon = const SizedBox(),
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +40,19 @@ class CustomButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
-            child: Text(
-              title,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                  color: textColor, fontWeight: FontWeight.w600),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                icon,
+                Text(
+                  title,
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: textColor,
+                      fontWeight: fontWeight,
+                      fontSize: fontSize,
+                      fontFamily: fontFamily),
+                ),
+              ],
             ),
           ),
         ),
