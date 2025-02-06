@@ -21,9 +21,10 @@ class StringsManager {
   static const String onBoardingDescription4 =
       "Share your thoughts on the movies you've watched. Dive deep into film details and help others discover great movies with your reviews.";
   static const String startWatchingNow = "Start Watching Now";
-
+  static const String search = "Search";
   static const String next = "Next";
   static const String back = "Back";
+  static const String watch = "Watch";
   static const String finish = "Finish";
   static const String email = "Email";
   static const String password = "Password";

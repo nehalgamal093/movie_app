@@ -21,19 +21,28 @@ class AssetsManager {
   static const String avatarSeven = 'assets/images/avatarSeven.png';
   static const String avatarEight = 'assets/images/avatarEight.png';
   static const String avatarNine = 'assets/images/avatarNine.png';
-  static const String moviePoster1 = 'assets/images/movie_poster_1.png';
-  static const String moviePoster2 = 'assets/images/movie_poster_2.png';
-  static const String moviePoster3 = 'assets/images/movie_poster_3.png';
-  static const String moviePoster4 = 'assets/images/movie_poster_4.png';
-  static const String moviePoster5 = 'assets/images/movie_poster_5.png';
-  static const String moviePoster6 = 'assets/images/movie_poster_6.png';
-  static const String moviePoster7 = 'assets/images/movie_poster_7.png';
-  static const String moviePoster8 = 'assets/images/movie_poster_8.png';
-  static const String moviePoster9 = 'assets/images/movie_poster_9.png';
-  static const String moviePoster10 = 'assets/images/movie_poster_10.png';
-  static const String moviePoster11 = 'assets/images/movie_poster_11.png';
-  static const String moviePoster12 = 'assets/images/movie_poster_12.png';
-
+  static const String moviePoster1 = 'assets/images/movie_poster_1.jpg';
+  static const String moviePoster2 = 'assets/images/movie_poster_2.jpg';
+  static const String moviePoster3 = 'assets/images/movie_poster_3.jpg';
+  static const String moviePoster4 = 'assets/images/movie_poster_4.jpg';
+  static const String moviePoster5 = 'assets/images/movie_poster_5.jpg';
+  static const String moviePoster6 = 'assets/images/movie_poster_6.jpg';
+  static const String moviePoster7 = 'assets/images/movie_poster_7.jpg';
+  static const String moviePoster8 = 'assets/images/movie_poster_8.jpg';
+  static const String moviePoster9 = 'assets/images/movie_poster_9.jpg';
+  static const String moviePoster10 = 'assets/images/movie_poster_10.jpg';
+  static const String moviePoster11 = 'assets/images/movie_poster_11.jpg';
+  static const String moviePoster12 = 'assets/images/movie_poster_12.jpg';
+  static const String moviePoster13 = 'assets/images/movie_poster_13.jpg';
+  static const String watchNow = 'assets/images/watch_now.png';
+  static const String availableNow = 'assets/images/available_now.png';
+  static const String actor1 = 'assets/images/actor1.jpg';
+  static const String actor2 = 'assets/images/actor2.jpg';
+  static const String actor3 = 'assets/images/actor3.jpg';
+  static const String actor4 = 'assets/images/actor4.jpg';
+  static const String header1 = 'assets/images/header1.jpg';
+  static const String header2 = 'assets/images/header2.jpg';
+  static const String header3 = 'assets/images/header3.jpg';
   //Icons
   static const String email = 'assets/icons/email.png';
   static const String eyeOff = 'assets/icons/eye_off.png';
@@ -52,4 +61,13 @@ class AssetsManager {
   static const String list = 'assets/icons/list.png';
   static const String exit = 'assets/icons/exit.png';
   static const String star = 'assets/icons/star.png';
+  static const String arrow = 'assets/icons/arrow.png';
+
+  static const String heart = 'assets/icons/heart.png';
+  static const String star2 = 'assets/icons/star2.png';
+  static const String watch = 'assets/icons/watch.png';
+
+  static const String backArrow = 'assets/icons/back_arrow.png';
+  static const String bookmark = 'assets/icons/bookmark.png';
+  static const String play = 'assets/icons/play.png';
 }

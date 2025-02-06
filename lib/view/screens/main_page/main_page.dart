@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/theme/color_manager.dart';
+import 'package:movies_app/view/screens/tabs/browse_tab/browse_tab.dart';
+import 'package:movies_app/view/screens/tabs/home_tab/home_tab.dart';
+import 'package:movies_app/view/screens/tabs/search_tab/search_tab.dart';
 import '../../../resources/assets_manager.dart';
 import '../tabs/profile_tab/profile_tab.dart';
 
@@ -54,15 +57,9 @@ class _MainPageState extends State<MainPage> {
   ];
 
   final List<Widget> list = const [
-    Center(
-      child: Text('Home'),
-    ),
-    Center(
-      child: Text('Search'),
-    ),
-    Center(
-      child: Text('Browse'),
-    ),
+    HomeTab(),
+    SearchTab(),
+    BrowseTab(),
     ProfileTab()
   ];
 }

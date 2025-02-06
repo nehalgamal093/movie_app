@@ -32,18 +32,21 @@ class HistoryTab extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-        itemCount: moviePosters.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            mainAxisSpacing: 16,
-            crossAxisSpacing: 16,
-            childAspectRatio: 122 / 179),
-        itemBuilder: (context, index) {
-          return MovieItem(
-            image: moviePosters[index],
-            rating: '7.7',
-          );
-        });
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: GridView.builder(
+          itemCount: moviePosters.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
+              childAspectRatio: 122 / 179),
+          itemBuilder: (context, index) {
+            return MovieItem(
+              image: moviePosters[index],
+              rating: '7.7',
+            );
+          }),
+    );
   }
 }

@@ -6,6 +6,7 @@ import 'package:movies_app/view/screens/explore/explore_screen.dart';
 import 'package:movies_app/view/screens/forget_password_screen.dart';
 import 'package:movies_app/view/screens/login_screen/login_screen.dart';
 import 'package:movies_app/view/screens/main_page/main_page.dart';
+import 'package:movies_app/view/screens/movie_details_screen/movie_details_screen.dart';
 import 'package:movies_app/view/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:movies_app/view/screens/register_screen/register_screen.dart';
 
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
         RegisterScreen.routeName: (context) => RegisterScreen(),
         ForgetPasswordScreen.routeName: (context) => ForgetPasswordScreen(),
         MainPage.routeName: (context) => MainPage(),
-        EditProfileScreen.routeName :(context)=> EditProfileScreen()
+        EditProfileScreen.routeName :(context)=> EditProfileScreen(),
+        MovieDetailsScreen.routeName:(context) => MovieDetailsScreen()
       },
     );
   }
