@@ -7,6 +7,7 @@ import 'package:movies_app/resources/assets_manager.dart';
 import 'package:movies_app/resources/string_manager.dart';
 import 'package:movies_app/theme/color_manager.dart';
 import 'package:movies_app/view/screens/forget_password_screen.dart';
+import 'package:movies_app/view/screens/main_page/main_page.dart';
 import 'package:movies_app/view/screens/register_screen/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -58,7 +59,9 @@ class LoginScreen extends StatelessWidget {
               CustomButton(
                 color: ColorManager.primaryColor,
                 title: StringsManager.login,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, MainPage.routeName);
+                },
                 fontSize: 20,
                 fontWeight: FontWeight.w400,
                 fontFamily: 'Roboto',
@@ -82,7 +85,7 @@ class LoginScreen extends StatelessWidget {
                     indent: 80,
                     endIndent: 10,
                     thickness: 1,
-                  )),
+                  ),),
                   Text(StringsManager.or,
                       style: Theme.of(context).textTheme.bodySmall!.copyWith(
                           color: ColorManager.primaryColor, fontSize: 15)),

@@ -45,4 +45,15 @@ class StringsManager {
 
   static const String verifyEmail ="Verify Email";
   static const String forgetPass ="Forget Password";
+
+  static const String wishlist ="Wishlist";
+  static const String history ="History";
+  static const String editProfile ="Edit Profile";
+  static const String exit ="Exit";
+  static const String watchList ="Watch List";
+  static const String pickAvatar ="Pick Avatar";
+  static const String resetPassword = "Reset Password";
+
+  static const String deleteAccount ="Delete Account";
+  static const String updateData = "Update Data";
 }
