@@ -57,4 +57,9 @@ class StringsManager {
 
   static const String deleteAccount ="Delete Account";
   static const String updateData = "Update Data";
+  static const String screenShots = "Screen Shots";
+  static const String similar = "Similar";
+  static const String summary = "Summary";
+  static const String cast = "Cast";
+  static const String genres = "Genres";
 }
