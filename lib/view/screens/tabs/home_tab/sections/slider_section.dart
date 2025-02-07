@@ -1,19 +1,21 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:movies_app/models/MoviesResponse.dart';
 
 import '../../../../../common_widgets/movie_item.dart';
 import '../home_tab.dart';
 
 class SliderSection extends StatelessWidget {
+  final List<Results> popularMovies;
   final Function onChanged;
-  const SliderSection({super.key,required this.onChanged});
+  const SliderSection({super.key,required this.onChanged,required this.popularMovies});
 
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
       items: List.generate(
-        list.length,
-        (i) => MovieItem(image: list[i], rating: '7.7'),
+        popularMovies.length,
+        (i) => MovieItem(image: 'http://image.tmdb.org/t/p/w500${popularMovies[i].posterPath!}', rating:popularMovies[i].voteAverage.toString()),
       ),
       options: CarouselOptions(
         height: 400,

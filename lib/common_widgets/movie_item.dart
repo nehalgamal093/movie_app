@@ -19,7 +19,7 @@ class MovieItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.asset(image),
+            child: Image.network(image),
           ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
