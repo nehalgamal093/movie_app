@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/models/MovieDetailsResponse.dart';
 
 import '../widgets/genre_item.dart';
 
 class GenresSection extends StatelessWidget {
-  const GenresSection({super.key});
+ final List<Genres> genres;
+  const GenresSection({super.key,required this.genres});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class GenresSection extends StatelessWidget {
             children: List.generate(
                 genres.length,
                 (index) => GenreItem(
-                      title: genres[index],
+                      title: genres[index].name!,
                     ))),
       ),
     );

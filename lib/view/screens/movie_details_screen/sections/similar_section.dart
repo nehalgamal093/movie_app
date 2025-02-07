@@ -18,6 +18,7 @@ class SimilarSection extends StatelessWidget {
               childAspectRatio: 191 / 279),
           itemBuilder: (context, index) {
             return MovieItem(
+              id:'9484',
               image: list[index],
               rating: '7.7',
             );

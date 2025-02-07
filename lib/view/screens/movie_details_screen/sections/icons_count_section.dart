@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-
+import 'package:movies_app/models/MovieDetailsResponse.dart';
 import '../../../../resources/assets_manager.dart';
 import '../widgets/icon_text.dart';
 
 class IconsCountSection extends StatelessWidget {
-  const IconsCountSection({super.key});
+  final MovieDetailsResponse movieDetails;
+  const IconsCountSection({super.key, required this.movieDetails});
 
   @override
   Widget build(BuildContext context) {
@@ -12,15 +13,24 @@ class IconsCountSection extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          IconText(image: AssetsManager.heart, count: '15'),
+          IconText(
+            image: AssetsManager.heart,
+            count: movieDetails.voteCount.toString(),
+          ),
           SizedBox(
             width: 16,
           ),
-          IconText(image: AssetsManager.watch, count: '90'),
+          IconText(
+            image: AssetsManager.watch,
+            count: movieDetails.runtime.toString(),
+          ),
           SizedBox(
             width: 16,
           ),
-          IconText(image: AssetsManager.star2, count: '7.6'),
+          IconText(
+            image: AssetsManager.star2,
+            count: movieDetails.voteAverage.toString().substring(0, 3),
+          ),
         ],
       ),
     );

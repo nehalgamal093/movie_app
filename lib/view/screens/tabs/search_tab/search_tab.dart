@@ -29,6 +29,7 @@ class SearchTab extends StatelessWidget {
                       childAspectRatio: 191 / 279),
                   itemBuilder: (context, index) {
                     return MovieItem(
+                      id:'3994',
                       image: list[index],
                       rating: '7.7',
                     );

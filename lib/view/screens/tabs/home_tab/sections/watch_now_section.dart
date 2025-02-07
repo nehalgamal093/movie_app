@@ -39,6 +39,7 @@ class WatchNowSection extends StatelessWidget {
                     return AspectRatio(
                       aspectRatio: 146 / 220,
                       child: MovieItem(
+                        id:movies[index].id.toString(),
                         image:
                             'http://image.tmdb.org/t/p/w500${movies[index].posterPath}',
                         rating: movies[index]

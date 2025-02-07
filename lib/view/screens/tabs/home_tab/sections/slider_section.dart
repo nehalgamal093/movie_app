@@ -15,7 +15,9 @@ class SliderSection extends StatelessWidget {
     return CarouselSlider(
       items: List.generate(
         popularMovies.length,
-        (i) => MovieItem(image: 'http://image.tmdb.org/t/p/w500${popularMovies[i].posterPath!}', rating:popularMovies[i].voteAverage.toString()),
+        (i) => MovieItem(
+            id: popularMovies[i].id.toString(),
+            image: 'http://image.tmdb.org/t/p/w500${popularMovies[i].posterPath!}', rating:popularMovies[i].voteAverage.toString()),
       ),
       options: CarouselOptions(
         height: 400,

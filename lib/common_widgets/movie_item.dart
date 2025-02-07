@@ -6,13 +6,15 @@ import 'package:movies_app/view/screens/movie_details_screen/movie_details_scree
 class MovieItem extends StatelessWidget {
   final String image;
   final String rating;
-  const MovieItem({super.key, required this.image, required this.rating});
+  final String id;
+  const MovieItem({super.key, required this.image, required this.rating,required this.id});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        Navigator.pushNamed(context,MovieDetailsScreen.routeName);
+        print('id is === $id');
+        Navigator.pushNamed(context,MovieDetailsScreen.routeName,arguments: id);
       },
       child: Stack(
         alignment: Alignment.topLeft,

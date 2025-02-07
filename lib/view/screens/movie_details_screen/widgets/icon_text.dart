@@ -19,7 +19,7 @@ class IconText extends StatelessWidget {
         children: [
           Image.asset(image),
           SizedBox(width:18,),
-          Text(count,style: Theme.of(context).textTheme.bodyMedium,)
+          Text(count,style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: 15),)
         ],
       ),
     );

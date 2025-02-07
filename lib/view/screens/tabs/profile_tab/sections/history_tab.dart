@@ -43,6 +43,7 @@ class HistoryTab extends StatelessWidget {
               childAspectRatio: 122 / 179),
           itemBuilder: (context, index) {
             return MovieItem(
+              id:'3003',
               image: moviePosters[index],
               rating: '7.7',
             );
