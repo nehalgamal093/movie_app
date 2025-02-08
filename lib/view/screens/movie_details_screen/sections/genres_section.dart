@@ -25,4 +25,3 @@ class GenresSection extends StatelessWidget {
   }
 }
 
-List<String> genres = ['Action', 'Sci-Fi', 'Adventure', 'Horror', 'Fantasy'];

@@ -33,11 +33,13 @@ class EditProfileScreen extends StatelessWidget {
                 height: 35,
               ),
               CustomTextField(
+                  onChanged: (val){},
                   hintText: 'Nehal Gamal', prefixIcon: AssetsManager.email),
               SizedBox(
                 height: 19,
               ),
               CustomTextField(
+                  onChanged: (val){},
                   hintText: '3094485858', prefixIcon: AssetsManager.phone),
               SizedBox(
                 height: 30,

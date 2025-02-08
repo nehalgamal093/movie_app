@@ -25,6 +25,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                 height: 24,
               ),
               CustomTextField(
+                  onChanged: (val) {},
                   hintText: StringsManager.email,
                   prefixIcon: AssetsManager.email),
               SizedBox(

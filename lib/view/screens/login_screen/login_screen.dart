@@ -31,11 +31,13 @@ class LoginScreen extends StatelessWidget {
               ),
               SizedBox(height: 69),
               CustomTextField(
+                onChanged: (val){},
                 hintText: StringsManager.email,
                 prefixIcon: AssetsManager.email,
               ),
               SizedBox(height: 22),
               CustomTextField(
+                onChanged: (val){},
                 hintText: StringsManager.password,
                 prefixIcon: AssetsManager.lock,
                 suffixIcon: Image.asset(

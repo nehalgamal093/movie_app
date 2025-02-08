@@ -7,17 +7,26 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final String prefixIcon;
   final Widget suffixIcon;
+  final Function(String)? onChanged;
   const CustomTextField(
       {super.key,
       required this.hintText,
       required this.prefixIcon,
+        required this.onChanged,
       this.suffixIcon = const SizedBox()});
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       style: Theme.of(context).textTheme.bodySmall,
       cursorColor: ColorManager.whiteColor,
+      onChanged: onChanged,
+      validator: (val){
+        if(val!.isEmpty){
+          return 'Required';
+        }
+        return null;
+      },
       decoration: InputDecoration(
         fillColor: ColorManager.darkGreyColor,
         filled: true,

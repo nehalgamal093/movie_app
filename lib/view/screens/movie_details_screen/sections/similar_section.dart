@@ -17,7 +17,7 @@ class SimilarSection extends StatelessWidget {
         return Text('Error');
       }
       var bloc = BlocProvider.of<SimilarMoviesCubit>(context);
-      var movies = bloc.moviesResponse!.results??[];
+      var movies = bloc.moviesResponse?.results??[];
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Wrap(
@@ -29,10 +29,11 @@ class SimilarSection extends StatelessWidget {
               height: size.height * .3,
               width: size.width*.4,
               child: MovieItem(
-                id: movies[index].id.toString(),
+                //TODO: if image is null
+                id: movies[index+1].id.toString(),
                 image:
-                'http://image.tmdb.org/t/p/w500${movies[index].posterPath!}',
-                rating: movies[index].voteAverage.toString(),
+                'http://image.tmdb.org/t/p/w500${movies[index+1].posterPath!}',
+                rating: movies[index+1].voteAverage.toString(),
               ),
             ):SizedBox()
           ),
