@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/api_manager/api_manager.dart';
 import 'package:movies_app/theme/color_manager.dart';
 import 'package:movies_app/view/screens/tabs/browse_tab/browse_tab.dart';
 import 'package:movies_app/view/screens/tabs/home_tab/home_tab.dart';

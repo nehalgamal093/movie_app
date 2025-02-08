@@ -1,35 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/cubit/similar_movies_cubit/similar_movies_cubit.dart';
 import '../../../../common_widgets/movie_item.dart';
-import '../../../../resources/assets_manager.dart';
 
 class SimilarSection extends StatelessWidget {
   const SimilarSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SliverPadding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      sliver: SliverGrid.builder(
-          itemCount: list.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              childAspectRatio: 191 / 279),
-          itemBuilder: (context, index) {
-            return MovieItem(
-              id:'9484',
-              image: list[index],
-              rating: '7.7',
-            );
-          }),
-    );
+    Size size = MediaQuery.of(context).size;
+    return BlocBuilder<SimilarMoviesCubit, SimilarMoviesState>(
+        builder: (context, state) {
+      if (state is SimilarMoviesLoading) {
+        return CircularProgressIndicator();
+      } else if (state is SimilarMoviesError) {
+        return Text('Error');
+      }
+      var bloc = BlocProvider.of<SimilarMoviesCubit>(context);
+      var movies = bloc.moviesResponse!.results;
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Wrap(
+          alignment: WrapAlignment.center,
+          children: List.generate(
+            4,
+            (index) => Container(
+              margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+              height: size.height * .3,
+              child: MovieItem(
+                id: movies![index].id.toString(),
+                image:
+                    'http://image.tmdb.org/t/p/w500${movies[index].posterPath!}',
+                rating: movies[index].voteAverage.toString(),
+              ),
+            ),
+          ),
+        ),
+      );
+    });
   }
 }
-List<String> list = [
-  AssetsManager.moviePoster1,
-  AssetsManager.moviePoster2,
-  AssetsManager.moviePoster3,
-  AssetsManager.moviePoster4,
-
-];
