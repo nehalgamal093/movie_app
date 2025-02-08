@@ -11,9 +11,9 @@ class MovieItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return InkWell(
       onTap: (){
-        print('id is === $id');
         Navigator.pushNamed(context,MovieDetailsScreen.routeName,arguments: id);
       },
       child: Stack(
@@ -21,7 +21,7 @@ class MovieItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.network(image),
+            child: Image.network(image,fit: BoxFit.cover,),
           ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),

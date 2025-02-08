@@ -17,23 +17,24 @@ class SimilarSection extends StatelessWidget {
         return Text('Error');
       }
       var bloc = BlocProvider.of<SimilarMoviesCubit>(context);
-      var movies = bloc.moviesResponse!.results;
+      var movies = bloc.moviesResponse!.results??[];
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Wrap(
           alignment: WrapAlignment.center,
           children: List.generate(
-            4,
-            (index) => Container(
+            movies.isNotEmpty?4:0,
+            (index) => movies.isNotEmpty?Container(
               margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
               height: size.height * .3,
+              width: size.width*.4,
               child: MovieItem(
-                id: movies![index].id.toString(),
+                id: movies[index].id.toString(),
                 image:
-                    'http://image.tmdb.org/t/p/w500${movies[index].posterPath!}',
+                'http://image.tmdb.org/t/p/w500${movies[index].posterPath!}',
                 rating: movies[index].voteAverage.toString(),
               ),
-            ),
+            ):SizedBox()
           ),
         ),
       );

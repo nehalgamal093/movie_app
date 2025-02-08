@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/models/actor_model.dart';
 import 'package:movies_app/theme/color_manager.dart';
-
 import '../../../../models/MovieCreditsResponse.dart';
 
 class CastItem extends StatelessWidget {

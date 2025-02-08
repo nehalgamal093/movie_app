@@ -29,7 +29,7 @@ class MoviesGenresSection extends StatelessWidget {
                 childAspectRatio: 191 / 279),
             itemBuilder: (context, index) {
               return MovieItem(
-                id: movies[index].toString(),
+                id: movies[index].id.toString(),
                 image:  'http://image.tmdb.org/t/p/w500${movies[index].posterPath!}',
                 rating: movies[index].voteAverage.toString(),
               );
