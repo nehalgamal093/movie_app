@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/caching/cache_helper.dart';
+import 'package:movies_app/cubit/profile_cubit/profile_cubit.dart';
 import 'package:movies_app/view/screens/edit_profile_screen/edit_profile_screen.dart';
+import 'package:movies_app/view/screens/login_screen/login_screen.dart';
 import '../../../../../common_widgets/custom_button.dart';
 import '../../../../../resources/assets_manager.dart';
 import '../../../../../resources/string_manager.dart';
 import '../../../../../theme/color_manager.dart';
 
 class ButtonsSection extends StatelessWidget {
-  const ButtonsSection({super.key});
+  final ProfileCubit? bloc;
+  const ButtonsSection({super.key,required this.bloc});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,7 @@ class ButtonsSection extends StatelessWidget {
             color: ColorManager.primaryColor,
             title: StringsManager.editProfile,
             onPressed: () {
-              Navigator.pushNamed(context, EditProfileScreen.routeName);
+             Navigator.pushNamed(context, EditProfileScreen.routeName,arguments: bloc);
             },
             fontSize: 20,
             fontWeight: FontWeight.w400,
@@ -40,7 +44,10 @@ class ButtonsSection extends StatelessWidget {
                 color: ColorManager.whiteColor,
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              CacheHelper.clearToken();
+              Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+            },
             leftIcon: false,
             fontSize: 20,
             textColor: ColorManager.whiteColor,

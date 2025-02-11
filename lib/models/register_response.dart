@@ -1,24 +1,35 @@
-
 class RegisterResponse {
   RegisterResponse({
-      String? message,
-      Data? data,}){
+    List<String>? message,
+    Data? data,
+  }) {
     _message = message;
     _data = data;
-}
+  }
 
   RegisterResponse.fromJson(dynamic json) {
-    _message = json['message'];
+    dynamic messageData = json['message'];
+    List<String> messageList = [];
+
+    if (messageData is String) {
+      messageList.add(messageData);
+    } else if (messageData is List) {
+      messageList = messageData.map((e) => e.toString()).toList();
+    }
+    _message = messageList;
     _data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
-  String? _message;
+  List<String>? _message;
   Data? _data;
-RegisterResponse copyWith({  String? message,
-  Data? data,
-}) => RegisterResponse(  message: message ?? _message,
-  data: data ?? _data,
-);
-  String? get message => _message;
+  RegisterResponse copyWith({
+    List<String>? message,
+    Data? data,
+  }) =>
+      RegisterResponse(
+        message: message ?? _message,
+        data: data ?? _data,
+      );
+  List<String>? get message => _message;
   Data? get data => _data;
 
   Map<String, dynamic> toJson() {
@@ -29,21 +40,20 @@ RegisterResponse copyWith({  String? message,
     }
     return map;
   }
-
 }
-
 
 class Data {
   Data({
-      String? email, 
-      String? password, 
-      String? name, 
-      String? phone, 
-      num? avaterId, 
-      String? id, 
-      String? createdAt, 
-      String? updatedAt, 
-      num? v,}){
+    String? email,
+    String? password,
+    String? name,
+    String? phone,
+    num? avaterId,
+    String? id,
+    String? createdAt,
+    String? updatedAt,
+    num? v,
+  }) {
     _email = email;
     _password = password;
     _name = name;
@@ -53,7 +63,7 @@ class Data {
     _createdAt = createdAt;
     _updatedAt = updatedAt;
     _v = v;
-}
+  }
 
   Data.fromJson(dynamic json) {
     _email = json['email'];
@@ -75,25 +85,28 @@ class Data {
   String? _createdAt;
   String? _updatedAt;
   num? _v;
-Data copyWith({  String? email,
-  String? password,
-  String? name,
-  String? phone,
-  num? avaterId,
-  String? id,
-  String? createdAt,
-  String? updatedAt,
-  num? v,
-}) => Data(  email: email ?? _email,
-  password: password ?? _password,
-  name: name ?? _name,
-  phone: phone ?? _phone,
-  avaterId: avaterId ?? _avaterId,
-  id: id ?? _id,
-  createdAt: createdAt ?? _createdAt,
-  updatedAt: updatedAt ?? _updatedAt,
-  v: v ?? _v,
-);
+  Data copyWith({
+    String? email,
+    String? password,
+    String? name,
+    String? phone,
+    num? avaterId,
+    String? id,
+    String? createdAt,
+    String? updatedAt,
+    num? v,
+  }) =>
+      Data(
+        email: email ?? _email,
+        password: password ?? _password,
+        name: name ?? _name,
+        phone: phone ?? _phone,
+        avaterId: avaterId ?? _avaterId,
+        id: id ?? _id,
+        createdAt: createdAt ?? _createdAt,
+        updatedAt: updatedAt ?? _updatedAt,
+        v: v ?? _v,
+      );
   String? get email => _email;
   String? get password => _password;
   String? get name => _name;
@@ -117,5 +130,4 @@ Data copyWith({  String? email,
     map['__v'] = _v;
     return map;
   }
-
 }

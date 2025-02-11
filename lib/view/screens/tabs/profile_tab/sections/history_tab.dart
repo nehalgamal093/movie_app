@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/common_widgets/movie_item.dart';
+import 'package:movies_app/cubit/favorite_movies_cubit/favorite_movies_cubit.dart';
+import 'package:movies_app/repository/fav_movies_repo/fav_movie_repo_impl.dart';
 import '../../../../../resources/assets_manager.dart';
 
 class HistoryTab extends StatelessWidget {
@@ -32,22 +35,37 @@ class HistoryTab extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: GridView.builder(
-          itemCount: moviePosters.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              mainAxisSpacing: 16,
-              crossAxisSpacing: 16,
-              childAspectRatio: 122 / 179),
-          itemBuilder: (context, index) {
-            return MovieItem(
-              id:'3003',
-              image: moviePosters[index],
-              rating: '7.7',
-            );
-          }),
+    return BlocProvider(
+      create: (context)=>FavoriteMoviesCubit(FavoriteMovieRepoImpl())..getFavoriteMovies(),
+      child: BlocBuilder<FavoriteMoviesCubit,FavoriteMoviesState>(
+    
+        builder: (context,state) {
+          if(state is FavoriteMoviesLoading){
+            return CircularProgressIndicator();
+          } else if(state is FavoriteMoviesError){
+            return Text(state.message.toString());
+          }
+          var bloc = BlocProvider.of<FavoriteMoviesCubit>(context);
+          var movies = bloc.favoriteMovies!.data!;
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: GridView.builder(
+                itemCount: movies.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    childAspectRatio: 122 / 179),
+                itemBuilder: (context, index) {
+                  return MovieItem(
+                    id:movies[index].movieId!,
+                    image:'http://image.tmdb.org/t/p/w500${movies[index].imageURL!}',
+                    rating:movies[index].rating.toString(),
+                  );
+                }),
+          );
+        }
+      ),
     );
   }
 }

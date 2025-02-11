@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/caching/cache_helper.dart';
 import 'package:movies_app/theme/my_theme/base_theme.dart';
 import 'package:movies_app/theme/my_theme/main_theme.dart';
 import 'package:movies_app/view/screens/edit_profile_screen/edit_profile_screen.dart';
@@ -9,6 +10,7 @@ import 'package:movies_app/view/screens/main_page/main_page.dart';
 import 'package:movies_app/view/screens/movie_details_screen/movie_details_screen.dart';
 import 'package:movies_app/view/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:movies_app/view/screens/register_screen/register_screen.dart';
+import 'package:movies_app/view/screens/reset_password/reset_password_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -19,7 +21,9 @@ class MyApp extends StatelessWidget {
       title: 'Movie app',
       debugShowCheckedModeBanner: false,
       theme: mainTheme.myThemeData,
-      initialRoute: ExploreScreen.routeName,
+      initialRoute: CacheHelper.getToken() == null
+          ? ExploreScreen.routeName
+          : MainPage.routeName,
       routes: {
         ExploreScreen.routeName: (context) => ExploreScreen(),
         OnboardingScreen.routeName: (context) => OnboardingScreen(),
@@ -27,8 +31,9 @@ class MyApp extends StatelessWidget {
         RegisterScreen.routeName: (context) => RegisterScreen(),
         ForgetPasswordScreen.routeName: (context) => ForgetPasswordScreen(),
         MainPage.routeName: (context) => MainPage(),
-        EditProfileScreen.routeName :(context)=> EditProfileScreen(),
-        MovieDetailsScreen.routeName:(context) => MovieDetailsScreen()
+        EditProfileScreen.routeName: (context) => EditProfileScreen(),
+        MovieDetailsScreen.routeName: (context) => MovieDetailsScreen(),
+        ResetPasswordScreen.routeName: (context) => ResetPasswordScreen()
       },
     );
   }

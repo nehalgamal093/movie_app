@@ -62,4 +62,6 @@ class StringsManager {
   static const String summary = "Summary";
   static const String cast = "Cast";
   static const String genres = "Genres";
+  static const String oldPassword = "Old password";
+  static const String newPassword = "New password";
 }

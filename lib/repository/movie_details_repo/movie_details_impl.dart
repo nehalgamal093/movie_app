@@ -1,10 +1,13 @@
 import 'dart:convert';
-
+import 'package:movies_app/models/AddMovieResponse.dart';
+import 'package:movies_app/models/DeleteMovieResponse.dart';
+import 'package:movies_app/models/IsMovieFavorite.dart';
 import 'package:movies_app/models/MovieDetailsResponse.dart';
 import 'package:movies_app/repository/movie_details_repo/movie_details_repo.dart';
-
+import '../../caching/cache_helper.dart';
 import '../../constants/constants.dart';
 import 'package:http/http.dart' as http;
+import '../../models/MoviesResponse.dart';
 
 class MovieDetailsImpl extends MovieDetailsRepo {
   @override
@@ -16,6 +19,72 @@ class MovieDetailsImpl extends MovieDetailsRepo {
     var json = jsonDecode(response.body);
     MovieDetailsResponse movieDetailsResponse =
         MovieDetailsResponse.fromJson(json);
+
     return movieDetailsResponse;
+  }
+
+  @override
+  Future<AddMovieResponse> addMovie(String movieId, String name, String imageUrl,
+      int rating, String year) async {
+    Uri url = Uri.https(
+      Constants.routeBaseUrl,
+      Constants.addFavoriteEndPoint,
+    );
+
+    http.Response response = await http.post(url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ${CacheHelper.getToken()}',
+        },
+        body: jsonEncode({
+
+            "movieId": movieId,
+            "name": name,
+            "rating": rating,
+            "imageURL": imageUrl,
+            "year": year
+
+        }));
+    var json = jsonDecode(response.body);
+    AddMovieResponse addMovieResponse = AddMovieResponse.fromJson(json);
+    return addMovieResponse;
+  }
+
+  @override
+  Future<IsMovieFavorite> isMovieFavorite(String id) async {
+    Uri url = Uri.https(
+      Constants.routeBaseUrl,
+      "${Constants.isMovieFavoriteEndPoint}/$id",
+    );
+
+    http.Response response = await http.get(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${CacheHelper.getToken()}',
+      },
+    );
+    var json = jsonDecode(response.body);
+    IsMovieFavorite isMovieFavorite = IsMovieFavorite.fromJson(json);
+    return isMovieFavorite;
+  }
+
+  @override
+  Future<DeleteMovieResponse> deleteMovie(String id) async{
+    Uri url = Uri.https(
+      Constants.routeBaseUrl,
+      "${Constants.deleteMovieEndPoint}/$id",
+    );
+
+    http.Response response = await http.delete(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${CacheHelper.getToken()}',
+      },
+    );
+    var json = jsonDecode(response.body);
+    DeleteMovieResponse deleteMovieResponse = DeleteMovieResponse.fromJson(json);
+    return deleteMovieResponse;
   }
 }

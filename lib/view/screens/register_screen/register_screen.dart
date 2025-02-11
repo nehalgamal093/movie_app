@@ -50,12 +50,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   context: context,
                   builder: (context) {
                     return AlertDialog(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5)),
                       content: Text(
                         state.message,
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium!
-                            .copyWith(color: ColorManager.blackColor),
+                            .copyWith(
+                                color: ColorManager.blackColor,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 15),
                       ),
                     );
                   });

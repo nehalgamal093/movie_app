@@ -1,24 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/resources/assets_manager.dart';
 import 'package:movies_app/theme/color_manager.dart';
+import '../../../../../cubit/profile_cubit/profile_cubit.dart';
 
-pickAvatarBottomSheet(BuildContext context) {
+pickAvatarBottomSheet(BuildContext context,ProfileCubit profileCubit) {
   Size size = MediaQuery.of(context).size;
-  int selectedIndex = 1;
+
   return showDialog(
       context: context,
       builder: (context) {
-        List<String> listOfImages = [
-          AssetsManager.avatarOne,
-          AssetsManager.avatarTwo,
-          AssetsManager.avatarThree,
-          AssetsManager.avatarFour,
-          AssetsManager.avatarFive,
-          AssetsManager.avatarSix,
-          AssetsManager.avatarSeven,
-          AssetsManager.avatarEight,
-          AssetsManager.avatarNine,
-        ];
         return AlertDialog(
           alignment: Alignment.bottomCenter,
           backgroundColor: ColorManager.darkGreyColor,
@@ -37,15 +27,19 @@ pickAvatarBottomSheet(BuildContext context) {
                         crossAxisSpacing: 19),
                     itemBuilder: (context, index) {
                       return InkWell(
-                        onTap: (){
-
+                        onTap: () {
+                          profileCubit.updateNewAvatar(index);
+                          Navigator.pop(context);
                         },
                         child: Container(
                           padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
-                            color:  selectedIndex==index?ColorManager.primaryWithOpacity:ColorManager.darkGreyColor,
+                            color: profileCubit.newId == index
+                                ? ColorManager.primaryWithOpacity
+                                : ColorManager.darkGreyColor,
                             borderRadius: BorderRadius.circular(20),
-                            border: Border.all(color: ColorManager.primaryColor),
+                            border:
+                                Border.all(color: ColorManager.primaryColor),
                           ),
                           child: Image.asset(listOfImages[index]),
                         ),
@@ -57,3 +51,14 @@ pickAvatarBottomSheet(BuildContext context) {
         );
       });
 }
+List<String> listOfImages = [
+  AssetsManager.avatarOne,
+  AssetsManager.avatarTwo,
+  AssetsManager.avatarThree,
+  AssetsManager.avatarFour,
+  AssetsManager.avatarFive,
+  AssetsManager.avatarSix,
+  AssetsManager.avatarSeven,
+  AssetsManager.avatarEight,
+  AssetsManager.avatarNine,
+];
