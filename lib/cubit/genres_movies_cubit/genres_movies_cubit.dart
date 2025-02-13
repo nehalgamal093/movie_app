@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:movies_app/models/GenresResponse.dart';
-import 'package:movies_app/models/MoviesResponse.dart';
+import 'package:movies_app/models/genres_response.dart';
+import 'package:movies_app/models/movies_responses.dart';
 import 'package:movies_app/repository/movies_genres_repo/movie_genres_repo.dart';
 import 'genres_movies_state.dart';
 

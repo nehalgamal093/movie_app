@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/cubit/movie_images_cubit/movie_images_cubit.dart';
 import 'package:movies_app/repository/movie_images_repo/movie_images_impl.dart';
+import 'package:movies_app/view/screens/movie_details_screen/sections/screenshots_loading.dart';
 import '../../../../resources/assets_manager.dart';
 
 class ScreenshotsSection extends StatelessWidget {
@@ -18,7 +19,7 @@ class ScreenshotsSection extends StatelessWidget {
         child: BlocBuilder<MovieImagesCubit, MovieImagesState>(
             builder: (context, state) {
           if (state is MovieImagesLoading) {
-            return CircularProgressIndicator();
+            return ScreenshotsLoading();
           } else if (state is MovieImagesError) {
             return Text('Error');
           }

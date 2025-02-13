@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/common_widgets/snack_bar_response.dart';
 import 'package:movies_app/cubit/movie_details_cubit/movie_details_state.dart';
-import 'package:movies_app/models/MovieDetailsResponse.dart';
+import 'package:movies_app/models/movie_details_response.dart';
 import 'package:movies_app/repository/movie_details_repo/movie_details_impl.dart';
+import 'package:movies_app/resources/string_manager.dart';
 import 'package:movies_app/theme/color_manager.dart';
 import '../../../../cubit/movie_details_cubit/movie_details_cubit.dart';
 import '../../../../resources/assets_manager.dart';
@@ -21,7 +23,11 @@ class BookmarkButton extends StatelessWidget {
         return BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
             builder: (context, state) {
           if (state is IsMovieFavoriteLoading) {
-            return CircularProgressIndicator();
+            return Icon(
+              Icons.bookmark_border,
+              color: ColorManager.whiteColor,
+              size: 40,
+            );
           } else if (state is IsMovieFavoriteError) {
             return Text('Error');
           }
@@ -45,7 +51,7 @@ class BookmarkButton extends StatelessWidget {
           } else {
             return InkWell(
               onTap: () {
-              bloc.deleteMovie(movieDetailsResponse.id.toString());
+                bloc.deleteMovie(movieDetailsResponse.id.toString());
               },
               child: Image.asset(AssetsManager.bookmark),
             );
@@ -53,17 +59,10 @@ class BookmarkButton extends StatelessWidget {
         });
       }, listener: (context, state) {
         if (state is AddFavoriteMoviesSuccess) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Movie added to favorites'),
-            ),
-          );
+          snackBarResponse(context, StringsManager.movieAddedToFavorites);
         } else if (state is AddFavoriteMoviesError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Something went wrong'),
-            ),
-          );
+          snackBarResponse(context, StringsManager.somethingWentWrong);
+
         }
       }),
     );

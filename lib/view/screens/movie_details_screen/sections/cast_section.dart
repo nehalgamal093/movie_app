@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/cubit/movie_credits_cubit/movie_credits_cubit.dart';
-
-import '../../../../models/actor_model.dart';
 import '../widgets/cast_item.dart';
 
 class CastSection extends StatelessWidget {

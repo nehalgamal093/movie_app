@@ -1,6 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/common_widgets/custom_button.dart';
-import 'package:movies_app/models/MovieDetailsResponse.dart';
+import 'package:movies_app/models/movie_details_response.dart';
 import 'package:movies_app/resources/assets_manager.dart';
 import 'package:movies_app/resources/string_manager.dart';
 import 'package:movies_app/theme/color_manager.dart';
@@ -31,17 +32,27 @@ class Header extends StatelessWidget {
         Align(
           child: Container(
             height: size.height * .7,
-            padding: const EdgeInsets.symmetric(horizontal: 16,),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+            ),
             child: Column(
               children: [
-                SizedBox(height: 50,),
+                SizedBox(
+                  height: 50,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image.asset(AssetsManager.backArrow),
-                   BookmarkButton(movieDetailsResponse:movieDetailsResponse)
+                    InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Image.asset(AssetsManager.backArrow)),
+                    BookmarkButton(movieDetailsResponse: movieDetailsResponse)
                   ],
                 ),
+                Spacer(),
+                Image.asset(AssetsManager.play),
                 Spacer(),
                 Text(
                   movieDetailsResponse.originalTitle!,
@@ -63,7 +74,7 @@ class Header extends StatelessWidget {
                 ),
                 CustomButton(
                   color: ColorManager.redColor,
-                  title: StringsManager.watch,
+                  title: StringsManager.watch.tr(),
                   onPressed: () {},
                   fontFamily: 'Roboto',
                   fontWeight: FontWeight.w700,

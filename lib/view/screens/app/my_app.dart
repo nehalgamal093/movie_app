@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/caching/cache_helper.dart';
 import 'package:movies_app/theme/my_theme/base_theme.dart';
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
       title: 'Movie app',
       debugShowCheckedModeBanner: false,
       theme: mainTheme.myThemeData,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       initialRoute: CacheHelper.getToken() == null
           ? ExploreScreen.routeName
           : MainPage.routeName,

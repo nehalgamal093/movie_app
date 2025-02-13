@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/common_widgets/loading_movies.dart';
 import 'package:movies_app/cubit/genres_movies_cubit/genres_movies_cubit.dart';
 import 'package:movies_app/cubit/genres_movies_cubit/genres_movies_state.dart';
-
 import '../../../../../common_widgets/movie_item.dart';
 
 class MoviesGenresSection extends StatelessWidget {
@@ -13,7 +13,7 @@ class MoviesGenresSection extends StatelessWidget {
     return BlocBuilder<GenresMoviesCubit, GenresMoviesState>(
         builder: (context, state) {
       if (state is MoviesLoading) {
-        return CircularProgressIndicator();
+        return Expanded(child: LoadingMovies());
       } else if (state is MoviesError) {
         return Text('Error');
       }

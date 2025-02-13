@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/color_manager.dart';
@@ -13,13 +14,13 @@ class CustomTextSpan extends StatelessWidget {
       text: TextSpan(
         children: [
           TextSpan(
-              text: text1,
+              text: text1.tr(),
               style: Theme.of(context)
                   .textTheme
                   .bodySmall!
                   .copyWith(fontSize: 14)),
           TextSpan(
-            text: text2,
+            text: text2.tr(),
             style: Theme.of(context)
                 .textTheme
                 .bodySmall!

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/common_widgets/custom_button.dart';
 import 'package:movies_app/resources/assets_manager.dart';
@@ -26,7 +27,7 @@ class ExploreScreen extends StatelessWidget {
             children: [
               Spacer(),
               Text(
-                StringsManager.findYourFavMovie,
+                StringsManager.findYourFavMovie.tr(),
                 style: Theme.of(context).textTheme.titleLarge,
                 textAlign: TextAlign.center,
               ),
@@ -34,7 +35,7 @@ class ExploreScreen extends StatelessWidget {
                 height: 16,
               ),
               Text(
-                StringsManager.getAccessToLibrary,
+                StringsManager.getAccessToLibrary.tr(),
                 style: Theme.of(context)
                     .textTheme
                     .titleMedium!
@@ -45,7 +46,7 @@ class ExploreScreen extends StatelessWidget {
                 height: 24,
               ),
               CustomButton(
-                title: StringsManager.exploreNow,
+                title: StringsManager.exploreNow.tr(),
                 color: ColorManager.primaryColor,
                 onPressed: () {
                   Navigator.pushNamed(context, OnboardingScreen.routeName);

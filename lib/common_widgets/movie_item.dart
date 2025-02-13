@@ -11,7 +11,6 @@ class MovieItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return InkWell(
       onTap: (){
         Navigator.pushNamed(context,MovieDetailsScreen.routeName,arguments: id);
@@ -33,9 +32,10 @@ class MovieItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  rating,
+                  rating.substring(0,1),
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
+                SizedBox(width: 4,),
                 Image.asset(AssetsManager.star),
               ],
             ),

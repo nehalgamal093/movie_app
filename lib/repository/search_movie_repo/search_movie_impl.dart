@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:movies_app/models/MoviesResponse.dart';
+import 'package:movies_app/models/movies_responses.dart';
 import 'package:movies_app/repository/search_movie_repo/search_movie_repo.dart';
 
 import '../../constants/constants.dart';

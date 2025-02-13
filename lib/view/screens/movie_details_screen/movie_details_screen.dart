@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/cubit/movie_credits_cubit/movie_credits_cubit.dart';
@@ -11,6 +12,7 @@ import 'package:movies_app/resources/string_manager.dart';
 import 'package:movies_app/view/screens/movie_details_screen/sections/cast_section.dart';
 import 'package:movies_app/view/screens/movie_details_screen/sections/genres_section.dart';
 import 'package:movies_app/view/screens/movie_details_screen/sections/header.dart';
+import 'package:movies_app/view/screens/movie_details_screen/sections/header_loading.dart';
 import 'package:movies_app/view/screens/movie_details_screen/sections/icons_count_section.dart';
 import 'package:movies_app/view/screens/movie_details_screen/sections/screenshots_section.dart';
 import 'package:movies_app/view/screens/movie_details_screen/sections/similar_section.dart';
@@ -43,7 +45,7 @@ class MovieDetailsScreen extends StatelessWidget {
         child: BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
             builder: (context, state) {
           if (state is MovieDetailsLoading) {
-            return CircularProgressIndicator();
+            return HeaderLoading();
           } else if (state is MovieDetailsError) {
             Text('Error');
           }
@@ -71,7 +73,7 @@ class MovieDetailsScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
-                    StringsManager.screenShots,
+                    StringsManager.screenShots.tr(),
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium!
@@ -96,7 +98,7 @@ class MovieDetailsScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
-                    StringsManager.similar,
+                    StringsManager.similar.tr(),
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium!
@@ -119,7 +121,7 @@ class MovieDetailsScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
-                    StringsManager.summary,
+                    StringsManager.summary.tr(),
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium!
@@ -142,7 +144,7 @@ class MovieDetailsScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
-                    StringsManager.cast,
+                    StringsManager.cast.tr(),
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium!
@@ -165,7 +167,7 @@ class MovieDetailsScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
-                    StringsManager.genres,
+                    StringsManager.genres.tr(),
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium!

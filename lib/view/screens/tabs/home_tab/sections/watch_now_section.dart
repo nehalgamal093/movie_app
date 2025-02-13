@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/cubit/top_rated_cubit/top_rated_cubit.dart';
 import 'package:movies_app/cubit/top_rated_cubit/top_rated_state.dart';
 import 'package:movies_app/repository/popular_movies/movies_impl.dart';
+import 'package:movies_app/view/screens/tabs/home_tab/sections/section_loading.dart';
 import '../../../../../common_widgets/movie_item.dart';
-import '../../../../../resources/assets_manager.dart';
 
 class WatchNowSection extends StatelessWidget {
   const WatchNowSection({super.key});
@@ -21,7 +21,7 @@ class WatchNowSection extends StatelessWidget {
           child: BlocBuilder<TopRatedCubit, TopRatedState>(
               builder: (context, state) {
             if (state is TopRatedLoading) {
-              return CircularProgressIndicator();
+              return SectionLoading();
             } else if (state is TopRatedError) {
               return Text('error');
             }

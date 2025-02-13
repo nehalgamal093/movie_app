@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
-import 'package:movies_app/models/MovieImages.dart';
+import 'package:movies_app/models/movie_images.dart';
 import 'package:movies_app/repository/movie_images_repo/movie_images_repo.dart';
 
 part 'movie_images_state.dart';

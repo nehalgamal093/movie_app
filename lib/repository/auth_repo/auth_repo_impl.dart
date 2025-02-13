@@ -24,7 +24,7 @@ class AuthRepoImpl extends AuthRepo {
           "password": userModel.password,
           "confirmPassword": userModel.confirmPassword,
           "phone": userModel.phone,
-          "avaterId": 1
+          "avaterId": userModel.avatarId
         }));
     var json = jsonDecode(response.body);
     RegisterResponse registerResponse = RegisterResponse.fromJson(json);

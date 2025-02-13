@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/theme/color_manager.dart';
-import '../../../../models/MovieCreditsResponse.dart';
+import '../../../../models/movie_credits_response.dart';
 
 class CastItem extends StatelessWidget {
   final Cast cast;

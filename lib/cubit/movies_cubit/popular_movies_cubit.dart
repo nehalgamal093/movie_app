@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:movies_app/cubit/movies_cubit/popular_movies_state.dart';
-import 'package:movies_app/models/MoviesResponse.dart';
+import 'package:movies_app/models/movies_responses.dart';
 import 'package:movies_app/repository/popular_movies/movies_repo.dart';
 
 class PopularMoviesCubit extends Cubit<PopularMoviesState> {

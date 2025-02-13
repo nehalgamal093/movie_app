@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/data/avatar_data.dart';
 import 'package:movies_app/resources/assets_manager.dart';
 import 'package:movies_app/theme/color_manager.dart';
 import '../../../../../cubit/profile_cubit/profile_cubit.dart';
@@ -20,7 +21,7 @@ pickAvatarBottomSheet(BuildContext context,ProfileCubit profileCubit) {
               children: [
                 GridView.builder(
                     shrinkWrap: true,
-                    itemCount: listOfImages.length,
+                    itemCount: AvatarData.listOfImages.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                         mainAxisSpacing: 19,
@@ -41,7 +42,7 @@ pickAvatarBottomSheet(BuildContext context,ProfileCubit profileCubit) {
                             border:
                                 Border.all(color: ColorManager.primaryColor),
                           ),
-                          child: Image.asset(listOfImages[index]),
+                          child: Image.asset(AvatarData.listOfImages[index]),
                         ),
                       );
                     })
@@ -51,14 +52,3 @@ pickAvatarBottomSheet(BuildContext context,ProfileCubit profileCubit) {
         );
       });
 }
-List<String> listOfImages = [
-  AssetsManager.avatarOne,
-  AssetsManager.avatarTwo,
-  AssetsManager.avatarThree,
-  AssetsManager.avatarFour,
-  AssetsManager.avatarFive,
-  AssetsManager.avatarSix,
-  AssetsManager.avatarSeven,
-  AssetsManager.avatarEight,
-  AssetsManager.avatarNine,
-];

@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/caching/cache_helper.dart';
 import 'package:movies_app/cubit/profile_cubit/profile_cubit.dart';
 import 'package:movies_app/view/screens/edit_profile_screen/edit_profile_screen.dart';
 import 'package:movies_app/view/screens/login_screen/login_screen.dart';
+import '../../../../../common_widgets/confirm_dialog.dart';
 import '../../../../../common_widgets/custom_button.dart';
 import '../../../../../resources/assets_manager.dart';
 import '../../../../../resources/string_manager.dart';
@@ -20,7 +22,7 @@ class ButtonsSection extends StatelessWidget {
           flex: 2,
           child: CustomButton(
             color: ColorManager.primaryColor,
-            title: StringsManager.editProfile,
+            title: StringsManager.editProfile.tr(),
             onPressed: () {
              Navigator.pushNamed(context, EditProfileScreen.routeName,arguments: bloc);
             },
@@ -36,17 +38,20 @@ class ButtonsSection extends StatelessWidget {
           flex: 1,
           child: CustomButton(
             color: ColorManager.redColor,
-            title: StringsManager.exit,
+            title: StringsManager.exit.tr(),
             icon: Padding(
-              padding: const EdgeInsets.only(left: 10),
+              padding:  EdgeInsetsDirectional.only(start: 10),
               child: ImageIcon(
                 AssetImage(AssetsManager.exit),
                 color: ColorManager.whiteColor,
               ),
             ),
             onPressed: () {
-              CacheHelper.clearToken();
-              Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+              confirmDialog(context, StringsManager.exit, StringsManager.areYouSureLogout.tr(), (){
+                CacheHelper.clearToken();
+                Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+              });
+
             },
             leftIcon: false,
             fontSize: 20,

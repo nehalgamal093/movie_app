@@ -1,9 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/models/MoviesResponse.dart';
-
+import 'package:movies_app/models/movies_responses.dart';
 import '../../../../../common_widgets/movie_item.dart';
-import '../home_tab.dart';
+
 
 class SliderSection extends StatelessWidget {
   final List<Results> popularMovies;

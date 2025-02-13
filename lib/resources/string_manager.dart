@@ -1,67 +1,75 @@
 class StringsManager {
-  static const String findYourFavMovie = "Find Your Next Favorite Movie Here";
+  static const String findYourFavMovie = "find_your_next_favorite";
   static const String getAccessToLibrary =
-      "Get access to a huge library of movies to suit all tastes. You will surely like it.";
+      "get_access_to_library";
 
-  static const String exploreNow = "Explore Now";
+  static const String exploreNow = "explore_now";
 
-  static const String onBoardingTitle1 = "Discover Movies";
+  static const String onBoardingTitle1 = "discover_movies";
   static const String onBoardingDescription1 =
-      "Explore a vast collection of movies in all qualities and genres. Find your next favorite film with ease.";
+      "explore_vast_collection_movies";
 
-  static const String onBoardingTitle2 = "Explore All Genres";
+  static const String onBoardingTitle2 = "explore_all_genres";
   static const String onBoardingDescription2 =
-      "Discover movies from every genre, in all available qualities. Find something new and exciting to watch every day.";
+      "discover_movie_from_genres";
 
-  static const String onBoardingTitle3 = "Create Watchlists";
+  static const String onBoardingTitle3 = "create_watchlists";
   static const String onBoardingDescription3 =
-      "Save movies to your watchlist to keep track of what you want to watch next. Enjoy films in various qualities and genres.";
+      "save_movies_to_watchlist";
 
-  static const String onBoardingTitle4 = "Rate, Review, and Learn";
+  static const String onBoardingTitle4 = "rate_review_learn";
   static const String onBoardingDescription4 =
-      "Share your thoughts on the movies you've watched. Dive deep into film details and help others discover great movies with your reviews.";
-  static const String startWatchingNow = "Start Watching Now";
-  static const String search = "Search";
-  static const String next = "Next";
-  static const String back = "Back";
-  static const String watch = "Watch";
-  static const String finish = "Finish";
-  static const String email = "Email";
-  static const String password = "Password";
-  static const String forgetPassword = "Forget Password ?";
-  static const String login = "Login";
-  static const String dontHaveAccount = "Don’t Have Account ?";
-  static const String createOne = " Create One";
-  static const String loginGoogle = "Login With Google";
-  static const String or = "OR";
+      "share_your_thoughts";
+  static const String startWatchingNow = "start_watching_now";
+  static const String search = "search";
+  static const String next = "next";
+  static const String back = "back";
+  static const String watch = "watch";
+  static const String finish = "finish";
+  static const String email = "email";
+  static const String password = "password";
+  static const String forgetPassword = "forget_password";
+  static const String login = "login";
+  static const String dontHaveAccount = "dont_have_account";
+  static const String createOne = "create_one";
+  static const String loginGoogle = "login_google";
+  static const String or = "or";
 
-  static const String register = "Register";
-  static const String name = "Name";
-  static const String avatar = "Avatar";
-  static const String confirmPassword ="Confirm Password";
-  static const String phoneNumber ="Phone Number";
-  static const String createAccount ="Create Account";
+  static const String register = "register";
+  static const String name = "name";
+  static const String avatar = "avatar";
+  static const String confirmPassword ="confirm_password";
+  static const String phoneNumber ="phone_number";
+  static const String createAccount ="create_account";
 
-  static const String alreadyHaveAccount = "Already Have Account ? ";
+  static const String alreadyHaveAccount = "already_have_account";
 
-  static const String verifyEmail ="Verify Email";
-  static const String forgetPass ="Forget Password";
+  static const String verifyEmail ="verify_email";
 
-  static const String wishlist ="Wishlist";
-  static const String history ="History";
-  static const String editProfile ="Edit Profile";
-  static const String exit ="Exit";
-  static const String watchList ="Watch List";
-  static const String pickAvatar ="Pick Avatar";
-  static const String resetPassword = "Reset Password";
 
-  static const String deleteAccount ="Delete Account";
-  static const String updateData = "Update Data";
-  static const String screenShots = "Screen Shots";
-  static const String similar = "Similar";
-  static const String summary = "Summary";
-  static const String cast = "Cast";
-  static const String genres = "Genres";
-  static const String oldPassword = "Old password";
-  static const String newPassword = "New password";
+  static const String wishlist ="wishlist";
+  static const String history ="history";
+  static const String editProfile ="edit_profile";
+  static const String exit ="exit";
+  static const String watchList ="watch_list";
+  static const String pickAvatar ="pick_avatar";
+  static const String resetPassword = "reset_password";
+
+  static const String deleteAccount ="delete_account";
+  static const String updateData = "update_data";
+  static const String screenShots = "screen_shots";
+  static const String similar = "similar";
+  static const String summary = "summary";
+  static const String cast = "cast";
+  static const String genres = "genres";
+  static const String oldPassword = "old_password";
+  static const String newPassword = "new_password";
+  static const String movieAddedToFavorites = 'movies_added';
+  static const String somethingWentWrong = 'something_went_wrong';
+  static const String areYouSureEdit = 'are_you_sure_edit';
+  static const String areYouSureDelete = 'are_you_sure_delete';
+  static const String areYouSureLogout = 'are_you_sure_logout';
+  static const String close = 'close';
+  static const String success ='success';
+  static const String seeMore ='see_more';
 }

@@ -1,18 +1,21 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/caching/cache_helper.dart';
 import 'package:movies_app/common_widgets/custom_button.dart';
 import 'package:movies_app/common_widgets/custom_switch.dart';
 import 'package:movies_app/common_widgets/custom_text_span.dart';
 import 'package:movies_app/common_widgets/custom_textfield.dart';
+import 'package:movies_app/common_widgets/loading_dialog.dart';
+import 'package:movies_app/common_widgets/response_dialog.dart';
 import 'package:movies_app/cubit/register_cubit/register_cubit.dart';
+import 'package:movies_app/providers/change_state.dart';
 import 'package:movies_app/resources/assets_manager.dart';
 import 'package:movies_app/resources/string_manager.dart';
 import 'package:movies_app/theme/color_manager.dart';
 import 'package:movies_app/view/screens/forget_password_screen.dart';
 import 'package:movies_app/view/screens/main_page/main_page.dart';
 import 'package:movies_app/view/screens/register_screen/register_screen.dart';
-
+import 'package:provider/provider.dart';
 import '../../../repository/auth_repo/auth_repo_impl.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -25,8 +28,10 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> formKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<ChangeState>(context);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
@@ -35,36 +40,10 @@ class _LoginScreenState extends State<LoginScreen> {
           child: BlocConsumer<RegisterCubit, RegisterState>(
             listener: (context, state) {
               if (state is LoginLoading) {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        backgroundColor: Colors.transparent,
-                        content: Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                      );
-                    });
+               loadingDialog(context);
               } else if (state is LoginError) {
                 Navigator.pop(context);
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5)),
-                        content: Text(
-                          state.message,
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium!
-                              .copyWith(
-                                  color: ColorManager.blackColor,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 15),
-                        ),
-                      );
-                    });
+               responseDialog(context,StringsManager.login, state.message);
               } else if (state is LoginSuccess) {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, MainPage.routeName);
@@ -91,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           onChanged: (val) {
                             bloc.updateEmailLogin(val);
                           },
-                          hintText: StringsManager.email,
+                          hintText: StringsManager.email.tr(),
                           prefixIcon: AssetsManager.email,
                         ),
                         SizedBox(height: 22),
@@ -99,10 +78,21 @@ class _LoginScreenState extends State<LoginScreen> {
                           onChanged: (val) {
                             bloc.updatePasswordLogin(val);
                           },
-                          hintText: StringsManager.password,
+                          hintText: StringsManager.password.tr(),
                           prefixIcon: AssetsManager.lock,
-                          suffixIcon: Image.asset(
-                            AssetsManager.eyeOff,
+                          isPassword: provider.obscurePassword,
+                          suffixIcon: InkWell(
+                            onTap: () {
+                              provider.changeObscurePassword();
+                            },
+                            child: provider.obscurePassword
+                                ? Image.asset(
+                                    AssetsManager.eyeOff,
+                                  )
+                                : Icon(
+                                    Icons.remove_red_eye,
+                                    color: ColorManager.whiteColor,
+                                  ),
                           ),
                         ),
                         Align(
@@ -113,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   context, ForgetPasswordScreen.routeName);
                             },
                             child: Text(
-                              StringsManager.forgetPassword,
+                              StringsManager.forgetPassword.tr(),
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall!
@@ -126,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 33),
                         CustomButton(
                           color: ColorManager.primaryColor,
-                          title: StringsManager.login,
+                          title: StringsManager.login.tr(),
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
                               bloc.login();
@@ -158,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 thickness: 1,
                               ),
                             ),
-                            Text(StringsManager.or,
+                            Text(StringsManager.or.tr(),
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodySmall!
@@ -178,7 +168,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 28),
                         CustomButton(
                           color: ColorManager.primaryColor,
-                          title: StringsManager.loginGoogle,
+                          title: StringsManager.loginGoogle.tr(),
                           textColor: ColorManager.darkGreyColor,
                           fontSize: 16,
                           fontWeight: FontWeight.w400,

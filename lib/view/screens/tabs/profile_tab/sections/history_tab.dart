@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/common_widgets/loading_movies.dart';
 import 'package:movies_app/common_widgets/movie_item.dart';
 import 'package:movies_app/cubit/favorite_movies_cubit/favorite_movies_cubit.dart';
 import 'package:movies_app/repository/fav_movies_repo/fav_movie_repo_impl.dart';
@@ -41,7 +42,7 @@ class HistoryTab extends StatelessWidget {
     
         builder: (context,state) {
           if(state is FavoriteMoviesLoading){
-            return CircularProgressIndicator();
+            return LoadingMovies();
           } else if(state is FavoriteMoviesError){
             return Text(state.message.toString());
           }

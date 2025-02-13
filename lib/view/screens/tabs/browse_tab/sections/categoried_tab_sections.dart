@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/cubit/genres_movies_cubit/genres_movies_cubit.dart';
-import 'package:movies_app/models/GenresResponse.dart';
+import 'package:movies_app/models/genres_response.dart';
 import '../../../../../theme/color_manager.dart';
 
 class CategoriesTabSections extends StatelessWidget {

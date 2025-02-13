@@ -1,4 +1,3 @@
-import 'package:movies_app/models/login_response.dart';
 import 'package:movies_app/models/profile_update_response.dart';
 import 'package:movies_app/models/register_response.dart';
 import 'package:movies_app/models/reset_password_response.dart';

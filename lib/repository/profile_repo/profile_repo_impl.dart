@@ -84,7 +84,6 @@ class ProfileRepoImpl extends ProfileRepo {
     var json = jsonDecode(response.body);
     ProfileUpdateResponse profileUpdateResponse =
         ProfileUpdateResponse.fromJson(json);
-print(json);
     return profileUpdateResponse;
   }
 }

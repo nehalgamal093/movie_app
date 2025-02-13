@@ -1,13 +1,12 @@
 import 'dart:convert';
-import 'package:movies_app/models/AddMovieResponse.dart';
-import 'package:movies_app/models/DeleteMovieResponse.dart';
-import 'package:movies_app/models/IsMovieFavorite.dart';
-import 'package:movies_app/models/MovieDetailsResponse.dart';
+import 'package:movies_app/models/add_movie_response.dart';
+import 'package:movies_app/models/delete_movie_response.dart';
+import 'package:movies_app/models/is_movie_favorite.dart';
+import 'package:movies_app/models/movie_details_response.dart';
 import 'package:movies_app/repository/movie_details_repo/movie_details_repo.dart';
 import '../../caching/cache_helper.dart';
 import '../../constants/constants.dart';
 import 'package:http/http.dart' as http;
-import '../../models/MoviesResponse.dart';
 
 class MovieDetailsImpl extends MovieDetailsRepo {
   @override

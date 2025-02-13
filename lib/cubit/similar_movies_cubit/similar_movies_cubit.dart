@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:movies_app/models/MoviesResponse.dart';
+import 'package:movies_app/models/movies_responses.dart';
 import 'package:movies_app/repository/similar_movies_repo/similar_movies_repo.dart';
 
 part 'similar_movies_state.dart';

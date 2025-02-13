@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:movies_app/models/MovieCreditsResponse.dart';
+import 'package:movies_app/models/movie_credits_response.dart';
 import 'package:movies_app/repository/movie_credits_repo/movie_credits_repo.dart';
 import 'package:http/http.dart' as http;
 import '../../constants/constants.dart';

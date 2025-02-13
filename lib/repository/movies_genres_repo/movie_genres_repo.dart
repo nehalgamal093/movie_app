@@ -1,5 +1,5 @@
-import 'package:movies_app/models/GenresResponse.dart';
-import 'package:movies_app/models/MoviesResponse.dart';
+import 'package:movies_app/models/genres_response.dart';
+import 'package:movies_app/models/movies_responses.dart';
 
 abstract class MovieGenresRepo {
   Future<GenresResponse> getGenres();

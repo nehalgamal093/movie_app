@@ -1,10 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
-import 'package:movies_app/models/MoviesResponse.dart';
-
+import 'package:movies_app/models/movies_responses.dart';
 import '../../debounce/debounce.dart';
 import '../../repository/search_movie_repo/search_movie_repo.dart';
-
 part 'movie_search_state.dart';
 
 class MovieSearchCubit extends Cubit<MovieSearchState> {

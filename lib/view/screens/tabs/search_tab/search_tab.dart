@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/common_widgets/custom_textfield.dart';
+import 'package:movies_app/common_widgets/loading_movies.dart';
 import 'package:movies_app/common_widgets/movie_item.dart';
 import 'package:movies_app/cubit/movie_search_cubit/movie_search_cubit.dart';
 import 'package:movies_app/repository/search_movie_repo/search_movie_impl.dart';
@@ -29,12 +31,12 @@ class SearchTab extends StatelessWidget {
                   onChanged: (val) {
                     bloc.typeSearchKeyword(val);
                   },
-                  hintText: StringsManager.search,
+                  hintText: StringsManager.search.tr(),
                   prefixIcon: AssetsManager.search),
               BlocBuilder<MovieSearchCubit, MovieSearchState>(
                   builder: (context, state) {
                 if (state is MovieSearchLoading) {
-                  return CircularProgressIndicator();
+                  return Expanded(child: LoadingMovies());
                 } else if (state is MovieSearchError) {
                   return Text('Error');
                 }

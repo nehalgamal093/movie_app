@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/common_widgets/custom_button.dart';
 import 'package:movies_app/models/onboarding_model.dart';
@@ -53,7 +54,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           height: 34,
                         ),
                         Text(
-                          OnboardingModel.get(index).title,
+                          OnboardingModel.get(index).title.tr(),
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
                         index < OnboardingModel.length - 1
@@ -62,7 +63,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               )
                             : SizedBox(),
                         Text(
-                          OnboardingModel.get(index).description,
+                          OnboardingModel.get(index).description.tr(),
                           textAlign: TextAlign.center,
                           style: Theme.of(context)
                               .textTheme
@@ -77,7 +78,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         index < OnboardingModel.length - 1
                             ? CustomButton(
                                 color: ColorManager.primaryColor,
-                                title: StringsManager.next,
+                                title: StringsManager.next.tr(),
                                 onPressed: () {
                                   pageController.nextPage(
                                       duration: Duration(milliseconds: 500),
@@ -89,7 +90,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               )
                             : CustomButton(
                                 color: ColorManager.primaryColor,
-                                title: StringsManager.finish,
+                                title: StringsManager.finish.tr(),
                                 onPressed: () {
                                   Navigator.pushNamed(
                                       context, LoginScreen.routeName);
@@ -105,7 +106,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ? CustomButton(
                                 color: ColorManager.blackColor,
                                 textColor: ColorManager.primaryColor,
-                                title: StringsManager.back,
+                                title: StringsManager.back.tr(),
                                 borderColor: ColorManager.primaryColor,
                                 onPressed: () {
                                   pageController.previousPage(

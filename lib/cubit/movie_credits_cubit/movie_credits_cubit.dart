@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:movies_app/models/MovieCreditsResponse.dart';
+import 'package:movies_app/models/movie_credits_response.dart';
 import 'package:movies_app/repository/movie_credits_repo/movie_credits_repo.dart';
 part 'movie_credits_state.dart';
 

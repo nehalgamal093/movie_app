@@ -1,7 +1,7 @@
-import 'package:movies_app/models/DeleteMovieResponse.dart';
-import 'package:movies_app/models/IsMovieFavorite.dart';
-import 'package:movies_app/models/MovieDetailsResponse.dart';
-import '../../models/AddMovieResponse.dart';
+import 'package:movies_app/models/delete_movie_response.dart';
+import 'package:movies_app/models/is_movie_favorite.dart';
+import 'package:movies_app/models/movie_details_response.dart';
+import '../../models/add_movie_response.dart';
 
 
 abstract class MovieDetailsRepo {

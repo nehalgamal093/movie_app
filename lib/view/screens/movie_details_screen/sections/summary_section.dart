@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/models/MovieDetailsResponse.dart';
+import 'package:movies_app/models/movie_details_response.dart';
 
 class SummarySection extends StatelessWidget {
   final MovieDetailsResponse movieDetails;

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../resources/assets_manager.dart';
 import '../theme/color_manager.dart';
@@ -15,7 +16,21 @@ class CustomSwitch extends StatelessWidget {
             WidgetStateProperty.all<Color>(ColorManager.primaryColor),
         inactiveThumbImage: AssetImage(AssetsManager.eg),
         activeThumbImage: AssetImage(AssetsManager.rl),
-        value: true,
-        onChanged: (val) {});
+        value: context.locale.toString() == "en",
+        onChanged: (val) {
+          changeLanguage(context);
+        });
+  }
+
+  void changeLanguage(BuildContext context) {
+    if (context.locale.toString() == "en") {
+      context.setLocale(
+        const Locale('ar'),
+      );
+    } else {
+      context.setLocale(
+        const Locale('en'),
+      );
+    }
   }
 }

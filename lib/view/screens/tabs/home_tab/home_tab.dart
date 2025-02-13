@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/common_widgets/movie_item.dart';
 import 'package:movies_app/cubit/movies_cubit/popular_movies_cubit.dart';
 import 'package:movies_app/cubit/movies_cubit/popular_movies_state.dart';
-import 'package:movies_app/models/MoviesResponse.dart';
 import 'package:movies_app/repository/popular_movies/movies_impl.dart';
 import 'package:movies_app/resources/assets_manager.dart';
 import 'package:movies_app/view/screens/tabs/home_tab/sections/action_section.dart';
+import 'package:movies_app/view/screens/tabs/home_tab/sections/home_loading.dart';
 import 'package:movies_app/view/screens/tabs/home_tab/sections/slider_section.dart';
 import 'package:movies_app/view/screens/tabs/home_tab/sections/watch_now_section.dart';
 
@@ -31,12 +30,13 @@ class _HomeTabState extends State<HomeTab> {
       child: BlocBuilder<PopularMoviesCubit, PopularMoviesState>(
           builder: (context, state) {
         if (state is PopularMoviesLoading) {
-          return CircularProgressIndicator();
+          return HomeLoading();
         } else if (state is PopularMoviesError) {
           return Text('error');
         } else {
           var bloc = BlocProvider.of<PopularMoviesCubit>(context);
           var movies = bloc.moviesResponse!.results!;
+
           return Container(
             width: size.width,
             height: size.height,
@@ -83,16 +83,3 @@ class _HomeTabState extends State<HomeTab> {
     );
   }
 }
-
-List<String> list2 = [
-  AssetsManager.moviePoster5,
-  AssetsManager.moviePoster6,
-  AssetsManager.moviePoster7,
-  AssetsManager.moviePoster8,
-];
-List<String> list = [
-  AssetsManager.moviePoster1,
-  AssetsManager.moviePoster12,
-  AssetsManager.moviePoster13,
-  AssetsManager.moviePoster10,
-];

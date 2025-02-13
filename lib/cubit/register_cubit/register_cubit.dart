@@ -15,6 +15,10 @@ class RegisterCubit extends Cubit<RegisterState> {
   String emailLogin = "";
   String passwordLogin = "";
   UserModel userModel = UserModel.init();
+
+  void updateAvatarId(int avatarId){
+    userModel.avatarId = avatarId;
+  }
   void updateName(String name) {
     userModel.name = name;
   }
