@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/resources/assets_manager.dart';
 import 'package:movies_app/theme/color_manager.dart';
 import '../../../../models/movie_credits_response.dart';
 
@@ -19,7 +20,7 @@ class CastItem extends StatelessWidget {
         children: [
           ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.network('http://image.tmdb.org/t/p/w500${cast.profilePath}',width: 70,height: 70,fit: BoxFit.cover,)),
+              child: cast.profilePath==null? Image.asset(AssetsManager.noImage,width: 70,height: 70,fit: BoxFit.cover,):Image.network('http://image.tmdb.org/t/p/w500${cast.profilePath}',width: 70,height: 70,fit: BoxFit.cover,)),
           SizedBox(
             width: 10,
           ),

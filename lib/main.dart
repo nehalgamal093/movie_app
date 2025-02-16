@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/providers/change_state.dart';
 import 'package:movies_app/view/screens/app/my_app.dart';
 import 'package:provider/provider.dart';
-
 import 'caching/cache_helper.dart';
 
 void main() async {
@@ -12,7 +11,11 @@ void main() async {
   await CacheHelper.init();
   runApp(
     MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => ChangeState())],
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => ChangeState(),
+        ),
+      ],
       child: EasyLocalization(
         supportedLocales: const [Locale("en"), Locale("ar")],
         path: 'assets/translations',

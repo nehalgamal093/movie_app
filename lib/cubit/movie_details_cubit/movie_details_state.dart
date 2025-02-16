@@ -36,3 +36,9 @@ final class DeleteMovieError extends MovieDetailsState {
   final String message;
   DeleteMovieError({required this.message});
 }
+final class FavoriteMoviesLoading extends MovieDetailsState {}
+final class FavoriteMoviesSuccess extends MovieDetailsState {}
+final class FavoriteMoviesError extends MovieDetailsState {
+  final String message;
+  FavoriteMoviesError({required this.message});
+}

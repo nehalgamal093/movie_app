@@ -11,6 +11,7 @@ class TitleCount extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(count),
+        SizedBox(height: 20,),
         Text(
           title,
           style: Theme.of(context)

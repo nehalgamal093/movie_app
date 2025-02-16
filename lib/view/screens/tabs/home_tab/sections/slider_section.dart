@@ -15,6 +15,7 @@ class SliderSection extends StatelessWidget {
       items: List.generate(
         popularMovies.length,
         (i) => MovieItem(
+            onBack: (){},
             id: popularMovies[i].id.toString(),
             image: 'http://image.tmdb.org/t/p/w500${popularMovies[i].posterPath!}', rating:popularMovies[i].voteAverage.toString()),
       ),

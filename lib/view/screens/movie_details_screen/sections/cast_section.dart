@@ -20,10 +20,16 @@ class CastSection extends StatelessWidget {
           }
           var bloc = BlocProvider.of<MovieCreditsCubit>(context);
           var credits = bloc.movieCreditsResponse!.cast;
+          int listLength = 0;
+          if(credits!.isNotEmpty&& credits.length>4){
+            listLength = 4;
+          } else{
+            listLength = credits.length;
+          }
           return Column(
-            children: List.generate(4, (index)=>SizedBox(
+            children: List.generate(listLength, (index)=>SizedBox(
                 height: size.height*.13,
-                child: CastItem(cast:credits![index]))),
+                child: CastItem(cast:credits[index]))),
           );
         })
       ),

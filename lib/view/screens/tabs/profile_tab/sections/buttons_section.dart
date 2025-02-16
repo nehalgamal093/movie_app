@@ -12,7 +12,7 @@ import '../../../../../theme/color_manager.dart';
 
 class ButtonsSection extends StatelessWidget {
   final ProfileCubit? bloc;
-  const ButtonsSection({super.key,required this.bloc});
+  const ButtonsSection({super.key, required this.bloc});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,10 @@ class ButtonsSection extends StatelessWidget {
             color: ColorManager.primaryColor,
             title: StringsManager.editProfile.tr(),
             onPressed: () {
-             Navigator.pushNamed(context, EditProfileScreen.routeName,arguments: bloc);
+              Navigator.pushNamed(context, EditProfileScreen.routeName,
+                  arguments: () {
+                bloc?.getProfile();
+              });
             },
             fontSize: 20,
             fontWeight: FontWeight.w400,
@@ -40,18 +43,18 @@ class ButtonsSection extends StatelessWidget {
             color: ColorManager.redColor,
             title: StringsManager.exit.tr(),
             icon: Padding(
-              padding:  EdgeInsetsDirectional.only(start: 10),
+              padding: EdgeInsetsDirectional.only(start: 10),
               child: ImageIcon(
                 AssetImage(AssetsManager.exit),
                 color: ColorManager.whiteColor,
               ),
             ),
             onPressed: () {
-              confirmDialog(context, StringsManager.exit, StringsManager.areYouSureLogout.tr(), (){
+              confirmDialog(context, StringsManager.exit,
+                  StringsManager.areYouSureLogout.tr(), () {
                 CacheHelper.clearToken();
                 Navigator.pushReplacementNamed(context, LoginScreen.routeName);
               });
-
             },
             leftIcon: false,
             fontSize: 20,

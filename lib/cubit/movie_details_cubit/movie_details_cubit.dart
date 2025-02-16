@@ -5,6 +5,7 @@ import 'package:movies_app/models/is_movie_favorite.dart';
 import 'package:movies_app/models/movie_details_response.dart';
 import 'package:movies_app/repository/movie_details_repo/movie_details_repo.dart';
 import '../../models/add_movie_response.dart';
+import '../../models/favorite_movies.dart';
 
 class MovieDetailsCubit extends Cubit<MovieDetailsState> {
   MovieDetailsRepo movieDetailsRepo;
@@ -12,6 +13,7 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
   MovieDetailsResponse? movieDetailsResponse;
   IsMovieFavorite? isMovieFavorite;
   DeleteMovieResponse? deleteMovieResponse;
+  FavoriteMovies? favoriteMovies;
   MovieDetailsCubit(this.movieDetailsRepo) : super(MovieDetailsInitial());
   bool isFavorite = false;
 
@@ -32,6 +34,24 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
     }
   }
 
+  void getFavoriteMovies() async {
+    try {
+      emit(
+        FavoriteMoviesLoading(),
+      );
+      favoriteMovies = await movieDetailsRepo.getFavoriteMovies();
+      emit(
+        FavoriteMoviesSuccess(),
+      );
+    } catch (error) {
+      emit(
+        FavoriteMoviesError(
+          message: error.toString(),
+        ),
+      );
+    }
+  }
+
   void addMovieToFavorites(String movieId, String name, String imageUrl,
       int rating, String year) async {
     try {
@@ -40,7 +60,7 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
       addMovieResponse = await movieDetailsRepo.addMovie(
           movieId, name, imageUrl, rating, year);
       movieFav(movieId);
-
+      getFavoriteMovies();
       emit(AddFavoriteMoviesSuccess());
     } catch (error) {
       emit(
@@ -73,6 +93,7 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
       deleteMovieResponse = await movieDetailsRepo.deleteMovie(
         id.toString(),
       );
+      getFavoriteMovies();
       emit(DeleteMovieSuccess());
     } catch (error) {
       emit(

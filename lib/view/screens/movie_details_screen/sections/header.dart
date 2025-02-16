@@ -9,7 +9,9 @@ import 'package:movies_app/view/screens/movie_details_screen/sections/bookmark_b
 
 class Header extends StatelessWidget {
   final MovieDetailsResponse movieDetailsResponse;
-  const Header({super.key, required this.movieDetailsResponse});
+  final Function onBack;
+  const Header(
+      {super.key, required this.movieDetailsResponse, required this.onBack});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,13 @@ class Header extends StatelessWidget {
               end: Alignment.bottomCenter,
             ).createShader(bounds);
           },
-          child: Image.network(
-              'http://image.tmdb.org/t/p/w500${movieDetailsResponse.posterPath!}'),
+          child: movieDetailsResponse.posterPath == null
+              ? Image.asset(
+                  AssetsManager.noImage,
+                  fit: BoxFit.cover,
+                )
+              : Image.network(
+                  'http://image.tmdb.org/t/p/w500${movieDetailsResponse.posterPath!}'),
         ),
         Align(
           child: Container(
@@ -44,15 +51,24 @@ class Header extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Image.asset(AssetsManager.backArrow)),
+                      onTap: () {
+                        Navigator.pop(context);
+                        onBack();
+                      },
+                      child: context.locale == "en"
+                          ? Image.asset(AssetsManager.arrow)
+                          : Transform.flip(
+                              flipX: true,
+                              child: Image.asset(AssetsManager.backArrow)),
+                    ),
                     BookmarkButton(movieDetailsResponse: movieDetailsResponse)
                   ],
                 ),
                 Spacer(),
-                Image.asset(AssetsManager.play),
+                InkWell(
+                  onTap: () async {},
+                  child: Image.asset(AssetsManager.play),
+                ),
                 Spacer(),
                 Text(
                   movieDetailsResponse.originalTitle!,

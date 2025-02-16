@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/cubit/profile_cubit/profile_cubit.dart';
 import 'package:movies_app/data/avatar_data.dart';
+import 'package:movies_app/methods/capitalize.dart';
 import 'package:movies_app/repository/profile_repo/profile_repo_impl.dart';
 import 'package:movies_app/resources/assets_manager.dart';
 import 'package:movies_app/resources/string_manager.dart';
@@ -11,6 +12,7 @@ import 'package:movies_app/view/screens/tabs/profile_tab/sections/buttons_sectio
 import 'package:movies_app/view/screens/tabs/profile_tab/sections/history_tab.dart';
 import 'package:movies_app/view/screens/tabs/profile_tab/sections/profile_loading.dart';
 import 'package:movies_app/view/screens/tabs/profile_tab/sections/watch_list_tab.dart';
+import 'package:movies_app/view/screens/tabs/profile_tab/sections/wish_list_section.dart';
 import 'package:movies_app/view/screens/tabs/profile_tab/widgets/title_count.dart';
 
 class ProfileTab extends StatefulWidget {
@@ -71,7 +73,7 @@ class _ProfileTabState extends State<ProfileTab>
                               height: 15,
                             ),
                             Text(
-                              user.name!,
+                              user.name!.capitalize(),
                               style: Theme.of(context)
                                   .textTheme
                                   .titleMedium!
@@ -81,8 +83,9 @@ class _ProfileTabState extends State<ProfileTab>
                             )
                           ],
                         ),
-                        TitleCount(title: StringsManager.wishlist.tr(), count: '1'),
-                        TitleCount(title: StringsManager.history.tr(), count: '11'),
+                        WishListSection(),
+                        TitleCount(
+                            title: StringsManager.history.tr(), count: '11'),
                       ],
                     ),
                     SizedBox(

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/cubit/movie_images_cubit/movie_images_cubit.dart';
 import 'package:movies_app/repository/movie_images_repo/movie_images_impl.dart';
 import 'package:movies_app/view/screens/movie_details_screen/sections/screenshots_loading.dart';
-import '../../../../resources/assets_manager.dart';
 
 class ScreenshotsSection extends StatelessWidget {
   final String id;
@@ -24,24 +23,31 @@ class ScreenshotsSection extends StatelessWidget {
             return Text('Error');
           }
           var bloc = BlocProvider.of<MovieImagesCubit>(context);
-          var images = bloc.movieImages!.posters;
+          var images = bloc.movieImages!.posters??[];
+          int length = 0;
+          if(images.isNotEmpty&&images.length>3){
+            length = 3;
+          } else {
+            length = images.length;
+          }
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: List.generate(
-                3,
-                (index) => Container(
+                images.isNotEmpty?length:0,
+                (index) =>images.isNotEmpty? Container(
                   width: double.infinity,
                   height:size.height*.19 ,
                   margin: const EdgeInsets.symmetric(vertical: 8),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: Image.network(
-                      'http://image.tmdb.org/t/p/w500${images![index].filePath!}',
+                      'http://image.tmdb.org/t/p/w500${images[index].filePath!}',
+                      height: size.height*.3,
                       fit: BoxFit.cover,
                     ),
                   ),
-                ),
+                ):SizedBox(),
               ),
             ),
           );
@@ -51,8 +57,4 @@ class ScreenshotsSection extends StatelessWidget {
   }
 }
 
-List<String> assets = [
-  AssetsManager.header1,
-  AssetsManager.header2,
-  AssetsManager.header3,
-];
+

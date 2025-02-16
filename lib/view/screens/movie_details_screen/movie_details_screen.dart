@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/common_widgets/movie_item.dart';
 import 'package:movies_app/cubit/movie_credits_cubit/movie_credits_cubit.dart';
 import 'package:movies_app/cubit/movie_details_cubit/movie_details_cubit.dart';
 import 'package:movies_app/cubit/movie_details_cubit/movie_details_state.dart';
@@ -25,21 +26,22 @@ class MovieDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String id = ModalRoute.of(context)?.settings.arguments as String;
+    ArgumentsNavigation argumentsNavigation = ModalRoute.of(context)?.settings.arguments as ArgumentsNavigation;
+
     return Scaffold(
       body: MultiBlocProvider(
         providers: [
           BlocProvider(
             create: (context) =>
-                MovieDetailsCubit(MovieDetailsImpl())..getMovieDetails(id),
+                MovieDetailsCubit(MovieDetailsImpl())..getMovieDetails(argumentsNavigation.id),
           ),
           BlocProvider(
             create: (context) =>
-                SimilarMoviesCubit(SimilarMoviesImpl())..getSimilarMovies(id),
+                SimilarMoviesCubit(SimilarMoviesImpl())..getSimilarMovies(argumentsNavigation.id),
           ),
           BlocProvider(
             create: (context) =>
-            MovieCreditsCubit(MovieCreditsImpl())..getCredits(id),
+                MovieCreditsCubit(MovieCreditsImpl())..getCredits(argumentsNavigation.id),
           )
         ],
         child: BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
@@ -55,6 +57,7 @@ class MovieDetailsScreen extends StatelessWidget {
             slivers: [
               SliverToBoxAdapter(
                 child: Header(
+                  onBack: argumentsNavigation.onBack,
                   movieDetailsResponse: movieDetails!,
                 ),
               ),
@@ -87,7 +90,7 @@ class MovieDetailsScreen extends StatelessWidget {
                 ),
               ),
               ScreenshotsSection(
-                id: id,
+                id: argumentsNavigation.id,
               ),
               SliverToBoxAdapter(
                 child: SizedBox(

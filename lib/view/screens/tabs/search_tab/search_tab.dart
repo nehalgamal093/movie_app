@@ -52,6 +52,7 @@ class SearchTab extends StatelessWidget {
                           childAspectRatio: 191 / 279),
                       itemBuilder: (context, index) {
                         return MovieItem(
+                          onBack: () {},
                           id: searchedMovies[index].id.toString(),
                           image:
                               'http://image.tmdb.org/t/p/w500${searchedMovies[index].posterPath}',
@@ -70,19 +71,3 @@ class SearchTab extends StatelessWidget {
     );
   }
 }
-
-List<String> list = [
-  AssetsManager.moviePoster1,
-  AssetsManager.moviePoster2,
-  AssetsManager.moviePoster3,
-  AssetsManager.moviePoster4,
-  AssetsManager.moviePoster5,
-  AssetsManager.moviePoster6,
-  AssetsManager.moviePoster7,
-  AssetsManager.moviePoster8,
-  AssetsManager.moviePoster9,
-  AssetsManager.moviePoster10,
-  AssetsManager.moviePoster11,
-  AssetsManager.moviePoster12,
-  AssetsManager.moviePoster13,
-];

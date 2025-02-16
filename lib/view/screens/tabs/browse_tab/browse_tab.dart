@@ -42,7 +42,10 @@ class BrowseTab extends StatelessWidget {
                   ),
                 ),
               ),
-              MoviesGenresSection()
+              MoviesGenresSection(),
+              SizedBox(
+                height: 80,
+              ),
             ],
           ),
         );
@@ -51,18 +54,3 @@ class BrowseTab extends StatelessWidget {
   }
 }
 
-List<String> list = [
-  AssetsManager.moviePoster1,
-  AssetsManager.moviePoster2,
-  AssetsManager.moviePoster3,
-  AssetsManager.moviePoster4,
-  AssetsManager.moviePoster5,
-  AssetsManager.moviePoster6,
-  AssetsManager.moviePoster7,
-  AssetsManager.moviePoster8,
-  AssetsManager.moviePoster9,
-  AssetsManager.moviePoster10,
-  AssetsManager.moviePoster11,
-  AssetsManager.moviePoster12,
-  AssetsManager.moviePoster13,
-];

@@ -18,8 +18,6 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   int selectedPhoto = 0;
-
-//TODO:Use provider
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -69,6 +67,11 @@ class _HomeTabState extends State<HomeTab> {
                   ),
                 ),
                 SliverToBoxAdapter(child: ActionSection()),
+                SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: 12,
+                  ),
+                ),
                 WatchNowSection(),
                 SliverToBoxAdapter(
                   child: SizedBox(

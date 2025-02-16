@@ -7,20 +7,24 @@ class MovieItem extends StatelessWidget {
   final String image;
   final String rating;
   final String id;
-  const MovieItem({super.key, required this.image, required this.rating,required this.id});
+  final Function onBack;
+  const MovieItem({super.key, required this.image, required this.rating,required this.id, required this.onBack});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        Navigator.pushNamed(context,MovieDetailsScreen.routeName,arguments: id);
+        ArgumentsNavigation argumentsNavigation = ArgumentsNavigation(id: id, onBack: (){
+          onBack();
+        });
+        Navigator.pushNamed(context,MovieDetailsScreen.routeName,arguments: argumentsNavigation,);
       },
       child: Stack(
         alignment: Alignment.topLeft,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.network(image,fit: BoxFit.cover,),
+            child: image.substring(30)=="null" ?Image.asset(AssetsManager.noImage,fit: BoxFit.cover,):Image.network('http://image.tmdb.org/t/p/w500$image',fit: BoxFit.cover,),
           ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
@@ -32,7 +36,7 @@ class MovieItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  rating.substring(0,1),
+                  rating,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
                 SizedBox(width: 4,),
@@ -44,4 +48,9 @@ class MovieItem extends StatelessWidget {
       ),
     );
   }
+}
+class ArgumentsNavigation{
+  String id;
+  Function onBack;
+  ArgumentsNavigation({required this.id,required this.onBack});
 }

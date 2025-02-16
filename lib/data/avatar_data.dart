@@ -2,14 +2,14 @@ import '../resources/assets_manager.dart';
 
 class AvatarData{
   static List<String> listOfImages = [
-    AssetsManager.avatarOne,
-    AssetsManager.avatarTwo,
-    AssetsManager.avatarThree,
-    AssetsManager.avatarFour,
-    AssetsManager.avatarFive,
-    AssetsManager.avatarSix,
-    AssetsManager.avatarSeven,
-    AssetsManager.avatarEight,
-    AssetsManager.avatarNine,
+    AssetsManager.avatar1,
+    AssetsManager.avatar2,
+    AssetsManager.avatar3,
+    AssetsManager.avatar4,
+    AssetsManager.avatar5,
+    AssetsManager.avatar6,
+    AssetsManager.avatar7,
+    AssetsManager.avatar8,
+    AssetsManager.avatar9,
   ];
 }

@@ -19,14 +19,21 @@ import '../../../cubit/profile_cubit/profile_cubit.dart';
 import '../../../data/avatar_data.dart';
 
 class EditProfileScreen extends StatelessWidget {
+
   static const String routeName = '/edit_profile';
   const EditProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var function = ModalRoute.of(context)?.settings.arguments! as Function;
     return Scaffold(
       appBar: AppBar(
         title: Text(StringsManager.pickAvatar.tr()),
+       leading: IconButton(onPressed: (){
+         Navigator.pop(context);
+        function();
+
+       }, icon: Icon(Icons.arrow_back)),
       ),
       body: BlocProvider(
         create: (context) => ProfileCubit(ProfileRepoImpl())..getProfile(),
@@ -37,7 +44,8 @@ class EditProfileScreen extends StatelessWidget {
               loadingDialog(context);
             } else if (state is UpdateProfileError) {
               Navigator.pop(context);
-              responseDialog(context, StringsManager.editProfile, state.message);
+              responseDialog(
+                  context, StringsManager.editProfile, state.message);
             } else if (state is UpdateProfileSuccess) {
               Navigator.pop(context);
               Navigator.pop(context);
@@ -74,7 +82,7 @@ class EditProfileScreen extends StatelessWidget {
                         height: 35,
                       ),
                       CustomTextField(
-                        initialText:bloc.registerResponse!.data!.email! ,
+                          initialText: bloc.registerResponse!.data!.email!,
                           onChanged: (val) {
                             bloc.updateNewEmail(val);
                           },
@@ -113,7 +121,9 @@ class EditProfileScreen extends StatelessWidget {
                         color: ColorManager.redColor,
                         title: StringsManager.deleteAccount.tr(),
                         onPressed: () {
-                          confirmDialog(context, StringsManager.deleteAccount.tr(),
+                          confirmDialog(
+                              context,
+                              StringsManager.deleteAccount.tr(),
                               StringsManager.areYouSureDelete.tr(), () {
                             bloc.deleteAccount();
                             CacheHelper.clearToken();
@@ -135,8 +145,9 @@ class EditProfileScreen extends StatelessWidget {
                           onPressed: () {
                             confirmDialog(context, StringsManager.editProfile,
                                 StringsManager.areYouSureEdit.tr(), () {
-                              if(bloc.newEmail.isEmpty){
-                                bloc.updateNewEmail(bloc.registerResponse!.data!.email!);
+                              if (bloc.newEmail.isEmpty) {
+                                bloc.updateNewEmail(
+                                    bloc.registerResponse!.data!.email!);
                                 bloc.updateProfile();
                               } else {
                                 bloc.updateProfile();
