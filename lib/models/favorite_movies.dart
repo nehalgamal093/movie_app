@@ -9,9 +9,9 @@ class FavoriteMovies {
 
   FavoriteMovies.fromJson(dynamic json) {
     _message = json['message'];
-    if (json['data'] != null) {
+    if (json['datasource'] != null) {
       _data = [];
-      json['data'].forEach((v) {
+      json['datasource'].forEach((v) {
         _data?.add(Data.fromJson(v));
       });
     }
@@ -30,7 +30,7 @@ FavoriteMovies copyWith({  String? message,
     final map = <String, dynamic>{};
     map['message'] = _message;
     if (_data != null) {
-      map['data'] = _data?.map((v) => v.toJson()).toList();
+      map['datasource'] = _data?.map((v) => v.toJson()).toList();
     }
     return map;
   }

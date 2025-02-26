@@ -6,7 +6,7 @@ class AddMovieResponse {
   }
 
   AddMovieResponse.fromJson(dynamic json) {
-    _data = json['data'] != null ? Data.fromJson(json['data']) : null;
+    _data = json['datasource'] != null ? Data.fromJson(json['datasource']) : null;
   }
   Data? _data;
   AddMovieResponse copyWith({
@@ -22,7 +22,7 @@ class AddMovieResponse {
     final map = <String, dynamic>{};
 
     if (_data != null) {
-      map['data'] = _data?.toJson();
+      map['datasource'] = _data?.toJson();
     }
     return map;
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/features/browse/presentation/screens/browse_tab/browse_tab.dart';
+import 'package:movies_app/features/home/presentation/screens/home_tab/home_tab.dart';
 import 'package:movies_app/theme/color_manager.dart';
-import 'package:movies_app/view/screens/tabs/browse_tab/browse_tab.dart';
-import 'package:movies_app/view/screens/tabs/home_tab/home_tab.dart';
 import 'package:movies_app/view/screens/tabs/search_tab/search_tab.dart';
 import '../../../resources/assets_manager.dart';
 import '../tabs/profile_tab/profile_tab.dart';

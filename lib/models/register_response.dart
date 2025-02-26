@@ -17,7 +17,7 @@ class RegisterResponse {
       messageList = messageData.map((e) => e.toString()).toList();
     }
     _message = messageList;
-    _data = json['data'] != null ? Data.fromJson(json['data']) : null;
+    _data = json['datasource'] != null ? Data.fromJson(json['datasource']) : null;
   }
   List<String>? _message;
   Data? _data;
@@ -36,7 +36,7 @@ class RegisterResponse {
     final map = <String, dynamic>{};
     map['message'] = _message;
     if (_data != null) {
-      map['data'] = _data?.toJson();
+      map['datasource'] = _data?.toJson();
     }
     return map;
   }

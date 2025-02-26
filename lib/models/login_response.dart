@@ -17,7 +17,7 @@ class LoginResponse {
       messageList = messageData.map((e) => e.toString()).toList();
     }
     _message = messageList;
-    _data = json['data'];
+    _data = json['datasource'];
   }
   List<String>? _message;
   String? _data;
@@ -36,7 +36,7 @@ class LoginResponse {
     final map = <String, dynamic>{};
     map['message'] = _message;
     if (_data != null) {
-      map['data'] = _data;
+      map['datasource'] = _data;
     }
     return map;
   }

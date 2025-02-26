@@ -56,10 +56,10 @@ class Header extends StatelessWidget {
                         onBack();
                       },
                       child: context.locale == "en"
-                          ? Image.asset(AssetsManager.arrow)
-                          : Transform.flip(
-                              flipX: true,
-                              child: Image.asset(AssetsManager.backArrow)),
+                          ?Transform.flip(
+                          flipX: true,
+                          child: Image.asset(AssetsManager.backArrow)): Image.asset(AssetsManager.backArrow)
+                          ,
                     ),
                     BookmarkButton(movieDetailsResponse: movieDetailsResponse)
                   ],

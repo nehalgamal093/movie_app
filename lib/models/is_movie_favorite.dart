@@ -9,7 +9,7 @@ class IsMovieFavorite {
 
   IsMovieFavorite.fromJson(dynamic json) {
     _message = json['message'];
-    _data = json['data'];
+    _data = json['datasource'];
   }
   String? _message;
   bool? _data;
@@ -27,7 +27,7 @@ class IsMovieFavorite {
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['message'] = _message;
-    map['data'] = _data;
+    map['datasource'] = _data;
     return map;
   }
 }

@@ -1,9 +1,9 @@
-class MoviesResponse {
-  MoviesResponse(
+class MoviesModel {
+  MoviesModel(
       {num? page,
-      List<Results>? results,
-      num? totalPages,
-      num? totalResults,
+        List<Results>? results,
+        num? totalPages,
+        num? totalResults,
       }) {
     _page = page;
     _results = results;
@@ -11,7 +11,7 @@ class MoviesResponse {
     _totalResults = totalResults;
   }
 
-  MoviesResponse.fromJson(dynamic json) {
+  MoviesModel.fromJson(dynamic json) {
     _page = json['page'];
     if (json['results'] != null) {
       _results = [];
@@ -26,13 +26,13 @@ class MoviesResponse {
   List<Results>? _results;
   num? _totalPages;
   num? _totalResults;
-  MoviesResponse copyWith({
+  MoviesModel copyWith({
     num? page,
     List<Results>? results,
     num? totalPages,
     num? totalResults,
   }) =>
-      MoviesResponse(
+      MoviesModel(
         page: page ?? _page,
         results: results ?? _results,
         totalPages: totalPages ?? _totalPages,

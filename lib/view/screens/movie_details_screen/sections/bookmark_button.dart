@@ -23,11 +23,7 @@ class BookmarkButton extends StatelessWidget {
         return BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
             builder: (context, state) {
           if (state is IsMovieFavoriteLoading) {
-            return Icon(
-              Icons.bookmark_border,
-              color: ColorManager.whiteColor,
-              size: 40,
-            );
+            return SizedBox();
           } else if (state is IsMovieFavoriteError) {
             return Text('Error');
           }
