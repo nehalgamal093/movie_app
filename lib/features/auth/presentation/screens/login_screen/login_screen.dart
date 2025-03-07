@@ -7,7 +7,6 @@ import 'package:movies_app/common_widgets/custom_text_span.dart';
 import 'package:movies_app/common_widgets/custom_textfield.dart';
 import 'package:movies_app/common_widgets/loading_dialog.dart';
 import 'package:movies_app/common_widgets/response_dialog.dart';
-import 'package:movies_app/cubit/register_cubit/register_cubit.dart';
 import 'package:movies_app/di.dart';
 import 'package:movies_app/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:movies_app/features/auth/presentation/screens/register_screen/register_screen.dart';

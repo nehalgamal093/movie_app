@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:movies_app/di.dart';
 import 'package:movies_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:movies_app/features/home/presentation/screens/home_tab/sections/action_section.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/data/avatar_data.dart';
-import 'package:movies_app/resources/assets_manager.dart';
 import 'package:movies_app/theme/color_manager.dart';
 import '../../../../../cubit/profile_cubit/profile_cubit.dart';
 
