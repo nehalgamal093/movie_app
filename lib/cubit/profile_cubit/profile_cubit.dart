@@ -59,6 +59,7 @@ class ProfileCubit extends Cubit<ProfileState> {
         emit(ProfileError(message: registerResponse!.message![0]));
       }
     } catch (error) {
+      print(error);
       emit(ProfileError(message: error.toString()));
     }
   }

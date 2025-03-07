@@ -44,7 +44,7 @@ class ProfileRepoImpl extends ProfileRepo {
     );
     var json = jsonDecode(response.body);
     RegisterResponse registerResponse = RegisterResponse.fromJson(json);
-
+print(registerResponse.message);
     return registerResponse;
   }
 

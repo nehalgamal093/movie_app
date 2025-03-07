@@ -3,4 +3,6 @@ class EndPoints{
   static const String topRatedMovies = '/3/movie/top_rated';
   static const String genres = '/3/genre/movie/list';
   static const String moviesByGenre = '/3/discover/movie';
+  static const String register = '/auth/register';
+  static const String login ='/auth/login';
 }

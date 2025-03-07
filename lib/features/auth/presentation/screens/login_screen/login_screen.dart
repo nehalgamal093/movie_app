@@ -8,15 +8,16 @@ import 'package:movies_app/common_widgets/custom_textfield.dart';
 import 'package:movies_app/common_widgets/loading_dialog.dart';
 import 'package:movies_app/common_widgets/response_dialog.dart';
 import 'package:movies_app/cubit/register_cubit/register_cubit.dart';
+import 'package:movies_app/di.dart';
+import 'package:movies_app/features/auth/presentation/bloc/auth_cubit.dart';
+import 'package:movies_app/features/auth/presentation/screens/register_screen/register_screen.dart';
 import 'package:movies_app/providers/change_state.dart';
 import 'package:movies_app/resources/assets_manager.dart';
 import 'package:movies_app/resources/string_manager.dart';
 import 'package:movies_app/theme/color_manager.dart';
 import 'package:movies_app/view/screens/forget_password_screen.dart';
 import 'package:movies_app/view/screens/main_page/main_page.dart';
-import 'package:movies_app/view/screens/register_screen/register_screen.dart';
 import 'package:provider/provider.dart';
-import '../../../repository/auth_repo/auth_repo_impl.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = '/login';
@@ -36,23 +37,23 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: BlocProvider(
-          create: (context) => RegisterCubit(AuthRepoImpl()),
-          child: BlocConsumer<RegisterCubit, RegisterState>(
+          create: (context) => getIt<AuthCubit>(),
+          child: BlocConsumer<AuthCubit, AuthState>(
             listener: (context, state) {
-              if (state is LoginLoading) {
+              if (state is LoginLoadingState) {
                loadingDialog(context);
-              } else if (state is LoginError) {
+              } else if (state is LoginFailedState) {
                 Navigator.pop(context);
-               responseDialog(context,StringsManager.login, state.message);
-              } else if (state is LoginSuccess) {
+               responseDialog(context,StringsManager.login, state.failures);
+              } else if (state is LoginSuccessState) {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, MainPage.routeName);
               }
             },
             builder: (context, state) {
-              return BlocBuilder<RegisterCubit, RegisterState>(
+              return BlocBuilder<AuthCubit, AuthState>(
                   builder: (context, state) {
-                var bloc = BlocProvider.of<RegisterCubit>(context);
+                var bloc = BlocProvider.of<AuthCubit>(context);
                 return Form(
                   key: formKey,
                   child: Container(
@@ -68,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 69),
                         CustomTextField(
                           onChanged: (val) {
-                            bloc.updateEmailLogin(val);
+                            bloc.updateLoginEmail(val);
                           },
                           hintText: StringsManager.email.tr(),
                           prefixIcon: AssetsManager.email,
@@ -76,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: 22),
                         CustomTextField(
                           onChanged: (val) {
-                            bloc.updatePasswordLogin(val);
+                            bloc.updateLoginPassword(val);
                           },
                           hintText: StringsManager.password.tr(),
                           prefixIcon: AssetsManager.lock,
@@ -130,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         InkWell(
                             onTap: () {
                               Navigator.pushNamed(
-                                  context, RegisterScreen.routeName);
+                                   context, RegisterScreen.routeName);
                             },
                             child: CustomTextSpan(
                                 text1: StringsManager.dontHaveAccount,

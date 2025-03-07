@@ -9,7 +9,7 @@ import '../../../../../core/resources/endpoints.dart';
 @Injectable(as: BrowseRemoteDataSource)
 class BrowseRemoteDataSourceImpl implements BrowseRemoteDataSource {
   APIManager apiManager;
-  BrowseRemoteDataSourceImpl(this.apiManager);
+  BrowseRemoteDataSourceImpl(@Named('moviesAPIManager') this.apiManager);
 
   @override
   Future<GenresModel> getGenres() async {

@@ -7,15 +7,16 @@ import 'package:movies_app/common_widgets/custom_text_span.dart';
 import 'package:movies_app/common_widgets/custom_textfield.dart';
 import 'package:movies_app/common_widgets/loading_dialog.dart';
 import 'package:movies_app/common_widgets/response_dialog.dart';
-import 'package:movies_app/cubit/register_cubit/register_cubit.dart';
+import 'package:movies_app/features/auth/presentation/bloc/auth_cubit.dart';
+import 'package:movies_app/features/auth/presentation/screens/login_screen/login_screen.dart';
+import 'package:movies_app/features/auth/presentation/screens/register_screen/sections/avatar_slider_section.dart';
 import 'package:movies_app/providers/change_state.dart';
-import 'package:movies_app/repository/auth_repo/auth_repo_impl.dart';
 import 'package:movies_app/resources/assets_manager.dart';
 import 'package:movies_app/resources/string_manager.dart';
 import 'package:movies_app/theme/color_manager.dart';
-import 'package:movies_app/view/screens/login_screen/login_screen.dart';
-import 'package:movies_app/view/screens/register_screen/sections/avatar_slider_section.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../../di.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const routeName = '/register';
@@ -38,23 +39,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
       body: SingleChildScrollView(
           child: BlocProvider(
-        create: (context) => RegisterCubit(AuthRepoImpl()),
-        child: BlocConsumer<RegisterCubit, RegisterState>(
+        create: (context) => getIt<AuthCubit>(),
+        child: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
-            if (state is RegisterLoading) {
+            if (state is RegisterLoadingState) {
               loadingDialog(context);
-            } else if (state is RegisterError) {
+            } else if (state is RegisterFailedState) {
               Navigator.pop(context);
-              responseDialog(context, StringsManager.register, state.message);
-            } else if (state is RegisterSuccess) {
+              responseDialog(context, StringsManager.register, state.failures);
+            } else if (state is RegisterSuccessState) {
               Navigator.pop(context);
               Navigator.pushNamed(context, LoginScreen.routeName);
             }
           },
           builder: (context, state) {
-            return BlocBuilder<RegisterCubit, RegisterState>(
+            return BlocBuilder<AuthCubit, AuthState>(
                 builder: (context, state) {
-              var bloc = BlocProvider.of<RegisterCubit>(context);
+              var bloc = BlocProvider.of<AuthCubit>(context);
               return Form(
                 key: formKey,
                 child: Padding(
@@ -62,9 +63,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Column(
                     children: [
                       AvatarSliderSection(
-
-                        onPageChanged:  (index, l) {
-                        bloc.updateAvatarId(index);
+                        onPageChanged: (index, l) {
+                          bloc.updateAvatarId(index);
                         },
                       ),
                       SizedBox(
@@ -100,17 +100,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           bloc.updatePassword(val);
                         },
                         hintText: StringsManager.password.tr(),
-                        prefixIcon: AssetsManager.lock,isPassword: provider.obscurePassword,
-
+                        prefixIcon: AssetsManager.lock,
+                        isPassword: provider.obscurePassword,
                         suffixIcon: InkWell(
-                            onTap: (){
-                              provider.changeObscurePassword();
-                            },
-
-                            child: provider.obscurePassword?Image.asset(AssetsManager.eyeOff):Icon(
-                              Icons.remove_red_eye,
-                              color: ColorManager.whiteColor,
-                            ),),
+                          onTap: () {
+                            provider.changeObscurePassword();
+                          },
+                          child: provider.obscurePassword
+                              ? Image.asset(AssetsManager.eyeOff)
+                              : Icon(
+                                  Icons.remove_red_eye,
+                                  color: ColorManager.whiteColor,
+                                ),
+                        ),
                       ),
                       SizedBox(
                         height: 24,
@@ -123,13 +125,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         isPassword: provider.obscureConfirmPassword,
                         prefixIcon: AssetsManager.lock,
                         suffixIcon: InkWell(
-                          onTap: (){
+                          onTap: () {
                             provider.changeObscureConfirmPassword();
                           },
-                          child: provider.obscureConfirmPassword?Image.asset(AssetsManager.eyeOff):Icon(
-                            Icons.remove_red_eye,
-                            color: ColorManager.whiteColor,
-                          ),),
+                          child: provider.obscureConfirmPassword
+                              ? Image.asset(AssetsManager.eyeOff)
+                              : Icon(
+                                  Icons.remove_red_eye,
+                                  color: ColorManager.whiteColor,
+                                ),
+                        ),
                       ),
                       SizedBox(
                         height: 24,

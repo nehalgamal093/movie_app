@@ -9,7 +9,7 @@ import 'package:movies_app/features/home/data/models/movies_model.dart';
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   APIManager apiManager;
 
-  HomeRemoteDataSourceImpl(this.apiManager);
+  HomeRemoteDataSourceImpl(@Named('moviesAPIManager') this.apiManager);
 
   @override
   Future<MoviesModel> getPopularMovies() async {

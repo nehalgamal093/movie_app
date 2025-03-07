@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/common_widgets/custom_button.dart';
+import 'package:movies_app/features/auth/presentation/screens/login_screen/login_screen.dart';
 import 'package:movies_app/models/onboarding_model.dart';
 import 'package:movies_app/resources/string_manager.dart';
-import 'package:movies_app/view/screens/login_screen/login_screen.dart';
 import '../../../theme/color_manager.dart';
 
 class OnboardingScreen extends StatefulWidget {
