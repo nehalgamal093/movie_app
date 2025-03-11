@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/di.dart';
 import 'package:movies_app/features/movie_details/presentation/bloc/movie_details_cubit.dart';
 import 'package:movies_app/features/movie_details/presentation/screens/movie_details_screen/sections/screenshots_loading.dart';
+
+import '../../../../../../core/di/di.dart';
 
 class ScreenshotsSection extends StatelessWidget {
   final String id;

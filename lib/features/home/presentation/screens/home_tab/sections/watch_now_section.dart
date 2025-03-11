@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/common_widgets/movie_item.dart';
-import 'package:movies_app/di.dart';
 import 'package:movies_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:movies_app/features/home/presentation/screens/home_tab/sections/section_loading.dart';
+
+import '../../../../../../core/di/di.dart';
 
 
 

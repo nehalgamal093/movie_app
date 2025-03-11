@@ -9,4 +9,5 @@ class EndPoints{
   static  String movieImages(String id) =>'/3/movie/$id/images';
   static  String similarMovies(String id) =>'/3/movie/$id/similar';
   static  String movieCredits(String id) =>'/3/movie/$id/credits';
+  static const String search = '/3/search/movie';
 }

@@ -4,11 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/common_widgets/custom_textfield.dart';
 import 'package:movies_app/common_widgets/loading_movies.dart';
 import 'package:movies_app/common_widgets/movie_item.dart';
-import 'package:movies_app/cubit/movie_search_cubit/movie_search_cubit.dart';
-import 'package:movies_app/repository/search_movie_repo/search_movie_impl.dart';
+import 'package:movies_app/features/search_movie/presentation/bloc/search_movie_cubit.dart';
 import 'package:movies_app/core/resources/assets_manager.dart';
-
-import '../../../../core/resources/string_manager.dart';
+import '../../../../../core/di/di.dart';
+import '../../../../../core/resources/string_manager.dart';
 
 class SearchTab extends StatelessWidget {
   const SearchTab({super.key});
@@ -18,11 +17,10 @@ class SearchTab extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: BlocProvider(
-        create: (context) =>
-            MovieSearchCubit(SearchMovieImpl())..getSearchedMovies(),
-        child: BlocBuilder<MovieSearchCubit, MovieSearchState>(
+        create: (context) =>getIt<SearchMovieCubit>()..getSearchedMovies(),
+        child: BlocBuilder<SearchMovieCubit, SearchMovieState>(
             builder: (context, state) {
-          var bloc = BlocProvider.of<MovieSearchCubit>(context);
+          var bloc = BlocProvider.of<SearchMovieCubit>(context);
           return Column(
             children: [
               SizedBox(
@@ -34,15 +32,15 @@ class SearchTab extends StatelessWidget {
                   },
                   hintText: StringsManager.search.tr(),
                   prefixIcon: AssetsManager.search),
-              BlocBuilder<MovieSearchCubit, MovieSearchState>(
+              BlocBuilder<SearchMovieCubit, SearchMovieState>(
                   builder: (context, state) {
-                if (state is MovieSearchLoading) {
+                if (state is SearchMovieLoadingState) {
                   return Expanded(child: LoadingMovies());
-                } else if (state is MovieSearchError) {
+                } else if (state is SearchMovieErrorState) {
                   return Text('Error');
                 }
-                var bloc = BlocProvider.of<MovieSearchCubit>(context);
-                var searchedMovies = bloc.moviesResponse!.results ?? [];
+                var bloc = BlocProvider.of<SearchMovieCubit>(context);
+                var searchedMovies = bloc.moviesModel!.results ?? [];
                 return Expanded(
                   child: GridView.builder(
                       itemCount: searchedMovies.length,

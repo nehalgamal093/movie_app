@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/di.dart';
 import 'package:movies_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:movies_app/features/home/presentation/screens/home_tab/sections/action_section.dart';
 import 'package:movies_app/features/home/presentation/screens/home_tab/sections/home_loading.dart';
 import 'package:movies_app/features/home/presentation/screens/home_tab/sections/slider_section.dart';
 import 'package:movies_app/features/home/presentation/screens/home_tab/sections/watch_now_section.dart';
 import 'package:movies_app/core/resources/assets_manager.dart';
+import '../../../../../core/di/di.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});

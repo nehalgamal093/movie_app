@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/di.dart';
 import 'package:movies_app/features/movie_details/presentation/bloc/movie_details_cubit.dart';
+import '../../../../../../core/di/di.dart';
 import '../widgets/cast_item.dart';
 
 class CastSection extends StatelessWidget {

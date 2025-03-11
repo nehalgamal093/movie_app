@@ -11,8 +11,8 @@ import 'package:movies_app/features/movie_details/presentation/screens/movie_det
 import 'package:movies_app/features/movie_details/presentation/screens/movie_details_screen/sections/screenshots_section.dart';
 import 'package:movies_app/features/movie_details/presentation/screens/movie_details_screen/sections/similar_section.dart';
 import 'package:movies_app/features/movie_details/presentation/screens/movie_details_screen/sections/summary_section.dart';
+import '../../../../../core/di/di.dart';
 import '../../../../../core/resources/string_manager.dart';
-import '../../../../../di.dart';
 
 class MovieDetailsScreen extends StatelessWidget {
   static const String routeName = '/movie_details';

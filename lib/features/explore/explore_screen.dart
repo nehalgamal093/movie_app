@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/common_widgets/custom_button.dart';
 import 'package:movies_app/core/resources/assets_manager.dart';
 import 'package:movies_app/theme/color_manager.dart';
-import 'package:movies_app/view/screens/onboarding_screen/onboarding_screen.dart';
-
 import '../../../core/resources/string_manager.dart';
+import '../onboarding_screen/onboarding_screen.dart';
 
 class ExploreScreen extends StatelessWidget {
   static const routeName = '/explore';

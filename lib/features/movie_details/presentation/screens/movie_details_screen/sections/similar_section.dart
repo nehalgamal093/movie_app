@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/features/movie_details/presentation/bloc/movie_details_cubit.dart';
 import '../../../../../../common_widgets/movie_item.dart';
-import '../../../../../../di.dart';
+import '../../../../../../core/di/di.dart';
 
 
 class SimilarSection extends StatelessWidget {

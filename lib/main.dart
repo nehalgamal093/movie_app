@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/di.dart';
 import 'package:movies_app/providers/change_state.dart';
-import 'package:movies_app/view/screens/app/my_app.dart';
 import 'package:provider/provider.dart';
 import 'caching/cache_helper.dart';
+import 'core/di/di.dart';
+import 'features/app/my_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

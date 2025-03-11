@@ -14,9 +14,8 @@ import 'package:movies_app/providers/change_state.dart';
 import 'package:movies_app/core/resources/assets_manager.dart';
 import 'package:movies_app/theme/color_manager.dart';
 import 'package:provider/provider.dart';
-
+import '../../../../../core/di/di.dart';
 import '../../../../../core/resources/string_manager.dart';
-import '../../../../../di.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const routeName = '/register';

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/common_widgets/loading_movies.dart';
-import 'package:movies_app/di.dart';
 import 'package:movies_app/features/browse/presentation/cubit/browse_cubit.dart';
 import 'package:movies_app/features/browse/presentation/screens/browse_tab/sections/categoried_tab_sections.dart';
 import 'package:movies_app/features/browse/presentation/screens/browse_tab/sections/movies_genres_section.dart';
+
+import '../../../../../core/di/di.dart';
 
 class BrowseTab extends StatelessWidget {
   const BrowseTab({super.key});
