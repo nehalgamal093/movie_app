@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/resources/assets_manager.dart';
+import 'package:movies_app/features/movie_details/presentation/screens/movie_details_screen/movie_details_screen.dart';
+import 'package:movies_app/core/resources/assets_manager.dart';
 import 'package:movies_app/theme/color_manager.dart';
-import 'package:movies_app/view/screens/movie_details_screen/movie_details_screen.dart';
 
 class MovieItem extends StatelessWidget {
   final String image;

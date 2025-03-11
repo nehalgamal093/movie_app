@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/resources/assets_manager.dart';
+import 'package:movies_app/core/resources/assets_manager.dart';
 
 class WatchListTab extends StatelessWidget {
   const WatchListTab({super.key});

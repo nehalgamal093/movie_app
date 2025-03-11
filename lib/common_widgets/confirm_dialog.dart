@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/methods/capitalize.dart';
-import 'package:movies_app/resources/string_manager.dart';
 
+import '../core/resources/string_manager.dart';
 import '../theme/color_manager.dart';
 
 confirmDialog(BuildContext context,String title,String message,Function() action){

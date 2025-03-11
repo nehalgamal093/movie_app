@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import '../resources/assets_manager.dart';
+import '../core/resources/assets_manager.dart';
 import '../theme/color_manager.dart';
 
 class CustomSwitch extends StatelessWidget {

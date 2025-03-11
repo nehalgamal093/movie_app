@@ -11,12 +11,13 @@ import 'package:movies_app/di.dart';
 import 'package:movies_app/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:movies_app/features/auth/presentation/screens/register_screen/register_screen.dart';
 import 'package:movies_app/providers/change_state.dart';
-import 'package:movies_app/resources/assets_manager.dart';
-import 'package:movies_app/resources/string_manager.dart';
+import 'package:movies_app/core/resources/assets_manager.dart';
 import 'package:movies_app/theme/color_manager.dart';
 import 'package:movies_app/view/screens/forget_password_screen.dart';
 import 'package:movies_app/view/screens/main_page/main_page.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../../core/resources/string_manager.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = '/login';

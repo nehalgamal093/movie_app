@@ -1,5 +1,6 @@
-import 'package:movies_app/resources/assets_manager.dart';
-import 'package:movies_app/resources/string_manager.dart';
+import 'package:movies_app/core/resources/assets_manager.dart';
+
+import '../core/resources/string_manager.dart';
 
 class OnboardingModel {
   final String title;

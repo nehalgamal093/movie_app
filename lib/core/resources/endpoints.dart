@@ -5,4 +5,8 @@ class EndPoints{
   static const String moviesByGenre = '/3/discover/movie';
   static const String register = '/auth/register';
   static const String login ='/auth/login';
+  static const String movieDetails ='/3/movie/';
+  static  String movieImages(String id) =>'/3/movie/$id/images';
+  static  String similarMovies(String id) =>'/3/movie/$id/similar';
+  static  String movieCredits(String id) =>'/3/movie/$id/credits';
 }

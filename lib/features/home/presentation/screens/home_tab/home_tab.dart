@@ -6,7 +6,7 @@ import 'package:movies_app/features/home/presentation/screens/home_tab/sections/
 import 'package:movies_app/features/home/presentation/screens/home_tab/sections/home_loading.dart';
 import 'package:movies_app/features/home/presentation/screens/home_tab/sections/slider_section.dart';
 import 'package:movies_app/features/home/presentation/screens/home_tab/sections/watch_now_section.dart';
-import 'package:movies_app/resources/assets_manager.dart';
+import 'package:movies_app/core/resources/assets_manager.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});

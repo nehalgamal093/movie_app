@@ -11,11 +11,11 @@ import 'package:movies_app/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:movies_app/features/auth/presentation/screens/login_screen/login_screen.dart';
 import 'package:movies_app/features/auth/presentation/screens/register_screen/sections/avatar_slider_section.dart';
 import 'package:movies_app/providers/change_state.dart';
-import 'package:movies_app/resources/assets_manager.dart';
-import 'package:movies_app/resources/string_manager.dart';
+import 'package:movies_app/core/resources/assets_manager.dart';
 import 'package:movies_app/theme/color_manager.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../../core/resources/string_manager.dart';
 import '../../../../../di.dart';
 
 class RegisterScreen extends StatefulWidget {

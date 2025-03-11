@@ -6,8 +6,9 @@ import 'package:movies_app/common_widgets/loading_movies.dart';
 import 'package:movies_app/common_widgets/movie_item.dart';
 import 'package:movies_app/cubit/movie_search_cubit/movie_search_cubit.dart';
 import 'package:movies_app/repository/search_movie_repo/search_movie_impl.dart';
-import 'package:movies_app/resources/assets_manager.dart';
-import 'package:movies_app/resources/string_manager.dart';
+import 'package:movies_app/core/resources/assets_manager.dart';
+
+import '../../../../core/resources/string_manager.dart';
 
 class SearchTab extends StatelessWidget {
   const SearchTab({super.key});
