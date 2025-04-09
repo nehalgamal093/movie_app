@@ -4,6 +4,7 @@ import 'package:movies_app/features/home/presentation/screens/home_tab/home_tab.
 import 'package:movies_app/theme/color_manager.dart';
 import '../../../core/resources/assets_manager.dart';
 import '../../../features/search_movie/presentation/screens/search_tab/search_tab.dart';
+import '../profile/presentation/screens/profile_tab/profile_tab.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -60,7 +61,7 @@ class _MainPageState extends State<MainPage> {
     HomeTab(),
     SearchTab(),
     BrowseTab(),
-    // ProfileTab()
+    ProfileTab()
   ];
 }
 

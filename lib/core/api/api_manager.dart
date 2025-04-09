@@ -32,4 +32,27 @@ class APIManager {
       throw Exception('Failed to Post: $e');
     }
   }
+  Future<Response> patchRequest(String endpoint, dynamic data,
+      {Map<String, dynamic>? headers}) async {
+    try {
+      return await dio.patch(
+        endpoint,
+        data: data,
+        options: Options(headers: headers),
+      );
+    } on DioException catch (e) {
+      throw Exception('Failed to Patch: $e');
+    }
+  }
+  Future<Response> deleteRequest(String endpoint,
+      {Map<String, dynamic>? headers}) async {
+    try {
+      return await dio.delete(
+        endpoint,
+        options: Options(headers: headers),
+      );
+    } on DioException catch (e) {
+      throw Exception('Failed to Delete: $e');
+    }
+  }
 }

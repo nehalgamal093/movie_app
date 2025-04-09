@@ -16,7 +16,7 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController pageController =
-      PageController(initialPage: 0, viewportFraction: 1);
+  PageController(initialPage: 0, viewportFraction: 1);
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +59,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                         index < OnboardingModel.length - 1
                             ? SizedBox(
-                                height: 24,
-                              )
+                          height: 24,
+                        )
                             : SizedBox(),
                         Text(
                           OnboardingModel.get(index).description.tr(),
@@ -72,51 +72,51 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                         index < OnboardingModel.length - 1
                             ? SizedBox(
-                                height: 24,
-                              )
+                          height: 24,
+                        )
                             : SizedBox(),
                         index < OnboardingModel.length - 1
                             ? CustomButton(
-                                color: ColorManager.primaryColor,
-                                title: StringsManager.next.tr(),
-                                onPressed: () {
-                                  pageController.nextPage(
-                                      duration: Duration(milliseconds: 500),
-                                      curve: Curves.easeIn);
-                                },
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Inter',
-                              )
+                          color: ColorManager.primaryColor,
+                          title: StringsManager.next.tr(),
+                          onPressed: () {
+                            pageController.nextPage(
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.easeIn);
+                          },
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Inter',
+                        )
                             : CustomButton(
-                                color: ColorManager.primaryColor,
-                                title: StringsManager.finish.tr(),
-                                onPressed: () {
-                                  Navigator.pushNamed(
-                                      context, LoginScreen.routeName);
-                                },
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Inter',
-                              ),
+                          color: ColorManager.primaryColor,
+                          title: StringsManager.finish.tr(),
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, LoginScreen.routeName);
+                          },
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Inter',
+                        ),
                         SizedBox(
                           height: 16,
                         ),
                         index > 0
                             ? CustomButton(
-                                color: ColorManager.blackColor,
-                                textColor: ColorManager.primaryColor,
-                                title: StringsManager.back.tr(),
-                                borderColor: ColorManager.primaryColor,
-                                onPressed: () {
-                                  pageController.previousPage(
-                                      duration: Duration(milliseconds: 500),
-                                      curve: Curves.easeIn);
-                                },
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Inter',
-                              )
+                          color: ColorManager.blackColor,
+                          textColor: ColorManager.primaryColor,
+                          title: StringsManager.back.tr(),
+                          borderColor: ColorManager.primaryColor,
+                          onPressed: () {
+                            pageController.previousPage(
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.easeIn);
+                          },
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Inter',
+                        )
                             : SizedBox()
                       ],
                     ),

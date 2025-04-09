@@ -10,4 +10,6 @@ class EndPoints{
   static  String similarMovies(String id) =>'/3/movie/$id/similar';
   static  String movieCredits(String id) =>'/3/movie/$id/credits';
   static const String search = '/3/search/movie';
+  static const String profile = '/profile';
+  static const String favorites ='/favorites/all';
 }
